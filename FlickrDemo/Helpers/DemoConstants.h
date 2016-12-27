@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef NS_ENUM(NSUInteger, ImageListType) {
+    ImageListTypeRecent, ImageListTypeInteresting
+};
 
 @interface DemoConstants : NSObject
-extern NSString* const ErrorDisplayUserInfoKey;
+
+extern NSString* const kErrorDisplayUserInfoKey;
+
+extern NSString* const kUserDefaultsImagePreference;
+extern NSString* const kUserDefaultsImageListRecent;
+extern NSString* const kUserDefaultsImageListInteresting;
 @end

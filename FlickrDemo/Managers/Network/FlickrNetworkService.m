@@ -58,10 +58,16 @@ NSString* const apiKey = @"d5c7df3552b89d13fe311eb42715b510";
     pageNum += 1; //how to deal wich if previous page load fails
     [apiClient fetchWithParams:params withApi: @"v1/public/yql" withHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         if (!error && ((NSHTTPURLResponse*)response).statusCode == 200) {
-            [parser parseToFlickrImagesWith:responseObject withHandler: ^(NSArray* images, NSError* error) {
-                handler(images, error);
-                //!!!cannot increase page num here cause, same page may load multiple times
-            }];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                //Parse result in background thread
+                [parser parseToFlickrImagesWith:responseObject withHandler: ^(NSArray* images, NSError* error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        handler(images, error);
+                    });
+                    //!!!cannot increase page num here cause, same page may load multiple times
+                }];
+            });
+           
         } else {
             //TODO: if status Code 401, need re-auth;
             handler(nil, error);

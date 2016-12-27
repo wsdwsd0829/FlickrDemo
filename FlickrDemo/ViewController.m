@@ -14,9 +14,12 @@
 //views
 #import "ImageCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+
+NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerService, otherwise no new page will loaded
+
 @interface ViewController ()<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
-    PhotosViewModel* viewModel;
 }
+@property (nonatomic) PhotosViewModel* viewModel;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *setmentedControl;
@@ -33,23 +36,41 @@
     UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc] init];
     self.collectionView.collectionViewLayout = flowLayout;
 
-    //setup dependencies: ViewModel
-    viewModel = [[PhotosViewModel alloc] init];
+    //setup UI
+    //this could change enum order and do not change storyboard to swap segment position
+    [self.setmentedControl setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [self.setmentedControl setTitle:@"Recent" forSegmentAtIndex:(int)ImageListTypeRecent];
+    [self.setmentedControl setTitle:@"Interesting" forSegmentAtIndex:(int)ImageListTypeInteresting];
     
+    //setup dependencies: ViewModel
+    self.viewModel = [[PhotosViewModel alloc] init];
+    [self setupViewModel];
+}
+
+-(void)setupViewModel {
     id weakSelf = self;
-    viewModel.updateBlock = ^() {
+    self.viewModel.updateBlock = ^() {
         ViewController* strongSelf = weakSelf;
         [strongSelf.collectionView reloadData];
+        switch(strongSelf.viewModel.type) {
+            case ImageListTypeRecent:
+                strongSelf.setmentedControl.selectedSegmentIndex = ImageListTypeRecent;
+                break;
+            case ImageListTypeInteresting:
+                strongSelf.setmentedControl.selectedSegmentIndex = ImageListTypeInteresting;
+                break;
+        }
     };
 }
 
+//MARK: user actions
 - (IBAction)segmentedControlChanged:(UISegmentedControl *)sender {
-    [viewModel segmentedControlChanged: sender.selectedSegmentIndex];
+    [self.viewModel segmentedControlChanged: (ImageListType)(sender.selectedSegmentIndex)];
 }
 
 //MARK: collectionView DataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return  viewModel.images.count;
+    return  self.viewModel.images.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -60,16 +81,16 @@
 -(void) p_configCell:(UICollectionViewCell*)cell forItemAtIndexPath:(NSIndexPath*) indexPath {
     if([cell isKindOfClass:[ImageCell class]]) {
         ImageCell* imageCell = (ImageCell*)cell;
-        [imageCell.imageView sd_setImageWithURL:[NSURL URLWithString:  viewModel.images[indexPath.row].originalImageUrlString] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        [imageCell.imageView sd_setImageWithURL:[NSURL URLWithString:  self.viewModel.images[indexPath.row].originalImageUrlString] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     }
     
     //NSLog(@"indexPath: %@", indexPath);
-    if(indexPath.row + 10 == viewModel.images.count) {
-        [viewModel loadImages];
+    if(indexPath.row + PreloadingOffset == self.viewModel.images.count) {
+        [self.viewModel loadImages];
     }
 }
-//MARK: collectionView delegate (UICollectionViewDelegateFlowLayout)
 
+//MARK: collectionView delegate (UICollectionViewDelegateFlowLayout)
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
    return CGSizeMake(self.collectionView.bounds.size.width / 2, 100);
 }
@@ -82,6 +103,5 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 0;
 }
-
 
 @end

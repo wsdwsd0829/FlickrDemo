@@ -14,7 +14,7 @@
 #import "PhotosViewModel.h"
 #import "FlickrNetworkService.h"
 #import "MessageManager.h"
-
+#import "PereferenceService.h"
 @interface PhotosViewModel() {
     //private backing stores
     NSMutableArray<FlickrImage*>* recentImages;
@@ -28,6 +28,8 @@
     
     //callback handling
     id<MessageManagerProtocol> messageManager;
+    id<PersistenceProtocol> persistenceService;
+    
 }
 @end
 
@@ -47,18 +49,40 @@
         _images = recentImages;
         
         messageManager = [[MessageManager alloc] init];
-        [self p_initializeLoading];
+        persistenceService = [[PereferenceService alloc] init];
+        [self setupSegmentControl];
     }
     return self;
 }
 
-- (void)segmentedControlChanged:(NSInteger)index {
-    if(index == 0) {
+-(void)setupSegmentControl {
+    NSString* imageListPref = [persistenceService stringForKey:kUserDefaultsImagePreference];
+    if(!imageListPref || [imageListPref isEqualToString:kUserDefaultsImageListRecent]) {
         imageService = recentImagesService;
         _images = recentImages;
-    } else {
+        self.type = ImageListTypeRecent;
+    } else if([imageListPref isEqualToString:kUserDefaultsImageListInteresting]){
         imageService = interestingImageService;
         _images = interestingImages;
+        self.type = ImageListTypeInteresting;
+    }
+    [self updateBlock]; //update type in time
+    [self p_initializeLoading];
+}
+
+- (void)segmentedControlChanged:(ImageListType)type {
+    self.type = type;
+    switch(type){
+        case ImageListTypeRecent:
+            imageService = recentImagesService;
+            _images = recentImages;
+            [persistenceService saveString: kUserDefaultsImageListRecent forKey:kUserDefaultsImagePreference];
+            break;
+        case ImageListTypeInteresting:
+            imageService = interestingImageService;
+            _images = interestingImages;
+            [persistenceService saveString:kUserDefaultsImageListInteresting forKey:kUserDefaultsImagePreference];
+            break;
     }
     //update ui
     self.updateBlock();

@@ -1,5 +1,5 @@
 //
-//  MessageManagerProtocol.h
+//  PereferenceService.h
 //  FlickrDemo
 //
 //  Created by Sida Wang on 12/26/16.
@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PersistenceProtocol.h"
 
-@protocol MessageManagerProtocol <NSObject>
--(void)showError:(NSError*) error;
+
+@interface PereferenceService : NSObject<PersistenceProtocol>
+
+
+
 @end

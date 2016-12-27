@@ -10,6 +10,11 @@
 
 @implementation DemoConstants
 
-NSString* const ErrorDisplayUserInfoKey = @"display";
+NSString* const kErrorDisplayUserInfoKey = @"display";
+
+
+NSString* const kUserDefaultsImagePreference = @"kUserDefaultsImagePreference";
+NSString* const kUserDefaultsImageListRecent = @"kUserDefaultsImageListRecent";
+NSString* const kUserDefaultsImageListInteresting = @"kUserDefaultsImageListInterest";
 
 @end

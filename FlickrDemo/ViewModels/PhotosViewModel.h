@@ -12,8 +12,8 @@
 @interface PhotosViewModel : NSObject 
 @property (nonatomic, readonly) NSArray<FlickrImage*>* images;
 @property (nonatomic, copy) void(^updateBlock)();
-
-- (void)segmentedControlChanged:(NSInteger)index;
+@property (nonatomic) ImageListType type;
+- (void)segmentedControlChanged:(ImageListType)type;
 -(void) loadImages;
 @end
 
