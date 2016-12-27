@@ -13,6 +13,7 @@
 @property (nonatomic, readonly) NSArray<FlickrImage*>* images;
 @property (nonatomic, copy) void(^updateBlock)();
 @property (nonatomic) ImageListType type;
+
 - (void)segmentedControlChanged:(ImageListType)type;
 -(void) loadImages;
 @end
