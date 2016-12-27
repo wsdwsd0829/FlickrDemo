@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-@class FlickrNetworkService;
+#import "FlickrNetworkServiceProtocol.h"
 
-@protocol FlickrRecentImageServiceProtocol <NSObject>
+@protocol FlickrRecentImageServiceProtocol <NSObject, FlickrNetworkServiceProtocol>
 -(void) loadRecentImages: (FlickrImageListHandler) handler;
 @end

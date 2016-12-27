@@ -7,19 +7,12 @@
 //
 
 #import "FlickrNetworkService.h"
-#import "ApiClientProtocol.h"
-#import "ApiClient.h"
 
-#import "FlickrImageParser.h"
+
 //https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.interestingness%20where%20api_key%3D%27d5c7df3552b89d13fe311eb42715b510%27&diagnostics=true&format=json
 //https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.recent%20where%20api_key%3D%27d5c7df3552b89d13fe311eb42715b510%27&diagnostics=true&format=json
 
-@interface FlickrNetworkService () {
-    id<ApiClientProtocol> apiClient;
-    FlickrImageParser* parser;
-    NSUInteger pageNum;
-    NSUInteger pageCount;
-}
+@interface FlickrNetworkService () 
 
 @end
 @implementation FlickrNetworkService
@@ -34,6 +27,10 @@
         pageCount = 20;
     }
     return self;
+}
+
+-(void) loadImages: (FlickrImageListHandler)handler {
+    NSLog(@"suppose to use in subclass");
 }
 
 -(void) loadRecentImages: (FlickrImageListHandler)handler {

@@ -8,23 +8,29 @@
 
 #import "ViewController.h"
 //services
-#import "FlickrNetworkService.h"
-//#import "FlickrRecentImageServiceProtocol.h"
-//#import "FlickrInterestingImageServiceProtocol.h"
+#import "FlickrNetworkServiceProtocol.h"
+#import "FlickrRecentImageServiceProtocol.h"
+#import "FlickrInterestingImageServiceProtocol.h"
+#import "FlickrRecentImageService.h"
+#import "FlickrInterestingImageService.h"
+
 //models
 #import "FlickrImage.h"
 //vies
 #import "ImageCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+
+NSInteger const PreloadOffset = 10;
+
 @interface ViewController ()<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
     NSMutableArray<FlickrImage*>* recentImages;
     NSMutableArray<FlickrImage*>* interestingImages;
-//    id<FlickrRecentImageServiceProtocol> recentImagesService;
-//    id<FlickrInterestingImageServiceProtocol> interestingService;
-    FlickrNetworkService* recentImagesService;
-    FlickrNetworkService* interestingImageService;
+    
+    id<FlickrRecentImageServiceProtocol> recentImagesService;
+    id<FlickrInterestingImageServiceProtocol> interestingImageService;
+
     //for ui
-    FlickrNetworkService* imageService;
+    id<FlickrNetworkServiceProtocol> imageService;
     NSMutableArray<FlickrImage*>* images;
 }
 
@@ -46,8 +52,8 @@
     //setup services
     recentImages = [NSMutableArray new];
     interestingImages = [NSMutableArray new];
-    recentImagesService = [[FlickrNetworkService alloc] init];
-    interestingImageService = [[FlickrNetworkService alloc] init];
+    recentImagesService = [[FlickrRecentImageService alloc] init];
+    interestingImageService = [[FlickrInterestingImageService alloc] init];
     // actual services
     imageService = recentImagesService;
     images = recentImages;
@@ -76,6 +82,7 @@
     [self p_configCell:cell forItemAtIndexPath:indexPath];
     return cell;
 }
+
 -(void) p_configCell:(UICollectionViewCell*)cell forItemAtIndexPath:(NSIndexPath*) indexPath {
     if([cell isKindOfClass:[ImageCell class]]) {
         ImageCell* imageCell = (ImageCell*)cell;
@@ -83,7 +90,7 @@
     }
     
     NSLog(@"indexPath: %@", indexPath);
-    if(indexPath.row + 10 == images.count) {
+    if(indexPath.row + PreloadOffset == images.count) {
         [self p_loadImages];
     }
 }
@@ -102,30 +109,27 @@
     return 0;
 }
 
+//helper methods
 -(void) p_loadImages {
-    if(imageService == recentImagesService) {
-        [imageService loadRecentImages:^(NSArray *imgs, NSError *error) {
+    [imageService loadImages:^(NSArray *imgs, NSError *error) {
+        if([imageService conformsToProtocol:@protocol(FlickrRecentImageServiceProtocol)]) {
             [recentImages addObjectsFromArray:imgs];
-            [self.collectionView reloadData];
-        }];
-    } else {
-        [imageService loadInterestingImages:^(NSArray *imgs, NSError *error) {
-            [interestingImages addObjectsFromArray:imgs];
-            [self.collectionView reloadData];
-        }];
-    }
+        } else {
+            [interestingImages addObjectsFromArray: imgs];
+        }
+        [self.collectionView reloadData];
+    }];
 }
 
 //to initialize loading;
--(void) p_initializeLoading{
-    [recentImagesService loadRecentImages:^(NSArray *imgs, NSError *error) {
+-(void) p_initializeLoading {
+    [recentImagesService loadImages:^(NSArray *imgs, NSError *error) {
         [recentImages addObjectsFromArray:imgs];
         [self.collectionView reloadData];
     }];
-    [interestingImageService loadInterestingImages:^(NSArray *imgs, NSError *error) {
+    [interestingImageService loadImages:^(NSArray *imgs, NSError *error) {
         [interestingImages addObjectsFromArray:imgs];
         [self.collectionView reloadData];
     }];
-
 }
 @end

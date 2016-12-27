@@ -9,13 +9,19 @@
 #import <Foundation/Foundation.h>
 
 #import "FlickrNetworkServiceProtocol.h"
-#import "FlickrRecentImageServiceProtocol.h"
-#import "FlickrInterestingImageServiceProtocol.h"
+#import "ApiClientProtocol.h"
+#import "ApiClient.h"
+#import "FlickrImageParser.h"
 
 ///Flickr service to fetch data
 
-@interface FlickrNetworkService : NSObject <FlickrRecentImageServiceProtocol,FlickrInterestingImageServiceProtocol>
-
+@interface FlickrNetworkService : NSObject <FlickrNetworkServiceProtocol>{
+    id<ApiClientProtocol> apiClient;
+    FlickrImageParser* parser;
+    NSUInteger pageNum;
+    NSUInteger pageCount;
+}
+-(void) p_fetchWithParams: (NSDictionary*) params withHandler:(FlickrImageListHandler) handler;
 //recent
 -(void) loadRecentImages: (FlickrImageListHandler) handler;
 //interesting

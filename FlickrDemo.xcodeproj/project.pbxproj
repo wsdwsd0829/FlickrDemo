@@ -21,6 +21,8 @@
 		0D8AD1B81E10F322008D5CCB /* FlickrImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1B71E10F322008D5CCB /* FlickrImageParser.m */; };
 		0D8AD1BF1E10F7FA008D5CCB /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1BE1E10F7FA008D5CCB /* Utils.m */; };
 		0DFC96EC1E11EC6D001EFDAD /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC96EB1E11EC6D001EFDAD /* ImageCell.m */; };
+		0DFC96F31E120AB4001EFDAD /* FlickrRecentImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC96F21E120AB4001EFDAD /* FlickrRecentImageService.m */; };
+		0DFC96F61E120CB1001EFDAD /* FlickrInterestingImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC96F51E120CB1001EFDAD /* FlickrInterestingImageService.m */; };
 		49D116AB5AEE6331D4C9409B /* Pods_FlickrDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8297A017918F3634F27686F /* Pods_FlickrDemo.framework */; };
 		A7B9A9DD3147CC7095C82F26 /* Pods_FlickrDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40165AD03C992FCC3B7FCB48 /* Pods_FlickrDemoTests.framework */; };
 /* End PBXBuildFile section */
@@ -75,6 +77,10 @@
 		0DFC96EE1E11F72E001EFDAD /* FlickrInterestingImageServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrInterestingImageServiceProtocol.h; path = Managers/Network/FlickrInterestingImageServiceProtocol.h; sourceTree = "<group>"; };
 		0DFC96EF1E11FE02001EFDAD /* FlickrNetworkServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrNetworkServiceProtocol.h; path = Managers/Network/FlickrNetworkServiceProtocol.h; sourceTree = "<group>"; };
 		0DFC96F01E1203EB001EFDAD /* ApiClientProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApiClientProtocol.h; path = Managers/Network/ApiClientProtocol.h; sourceTree = "<group>"; };
+		0DFC96F11E120AB4001EFDAD /* FlickrRecentImageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrRecentImageService.h; path = Managers/Network/FlickrRecentImageService.h; sourceTree = "<group>"; };
+		0DFC96F21E120AB4001EFDAD /* FlickrRecentImageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrRecentImageService.m; path = Managers/Network/FlickrRecentImageService.m; sourceTree = "<group>"; };
+		0DFC96F41E120CB1001EFDAD /* FlickrInterestingImageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrInterestingImageService.h; path = Managers/Network/FlickrInterestingImageService.h; sourceTree = "<group>"; };
+		0DFC96F51E120CB1001EFDAD /* FlickrInterestingImageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrInterestingImageService.m; path = Managers/Network/FlickrInterestingImageService.m; sourceTree = "<group>"; };
 		1E823D6942BD4948D3833D15 /* Pods-FlickrDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickrDemo/Pods-FlickrDemo.release.xcconfig"; sourceTree = "<group>"; };
 		40165AD03C992FCC3B7FCB48 /* Pods_FlickrDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickrDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9631C1EB3DD8C92A5C5FE43E /* Pods-FlickrDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlickrDemoTests/Pods-FlickrDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +202,10 @@
 				0D8AD1AD1E10E50C008D5CCB /* FlickrNetworkService.m */,
 				0D8AD1B61E10F322008D5CCB /* FlickrImageParser.h */,
 				0D8AD1B71E10F322008D5CCB /* FlickrImageParser.m */,
+				0DFC96F11E120AB4001EFDAD /* FlickrRecentImageService.h */,
+				0DFC96F21E120AB4001EFDAD /* FlickrRecentImageService.m */,
+				0DFC96F41E120CB1001EFDAD /* FlickrInterestingImageService.h */,
+				0DFC96F51E120CB1001EFDAD /* FlickrInterestingImageService.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -494,12 +504,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D8AD1B51E10EECF008D5CCB /* FlickrImage.m in Sources */,
+				0DFC96F61E120CB1001EFDAD /* FlickrInterestingImageService.m in Sources */,
 				0D8AD17D1E10E432008D5CCB /* ViewController.m in Sources */,
 				0D8AD17A1E10E432008D5CCB /* AppDelegate.m in Sources */,
 				0D8AD1BF1E10F7FA008D5CCB /* Utils.m in Sources */,
 				0D8AD1771E10E432008D5CCB /* main.m in Sources */,
 				0D8AD1B81E10F322008D5CCB /* FlickrImageParser.m in Sources */,
 				0D8AD1AA1E10E4A8008D5CCB /* ApiClient.m in Sources */,
+				0DFC96F31E120AB4001EFDAD /* FlickrRecentImageService.m in Sources */,
 				0DFC96EC1E11EC6D001EFDAD /* ImageCell.m in Sources */,
 				0D8AD1AE1E10E50C008D5CCB /* FlickrNetworkService.m in Sources */,
 			);
