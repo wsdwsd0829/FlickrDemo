@@ -26,17 +26,19 @@
         if(count > 0 && [dict[@"query"] objectForKey: @"results"] && [dict[@"query"][@"results"] objectForKey:@"photo"]) {
             NSArray* photos = dict[@"query"][@"results"][@"photo"];
             for(id photo in photos) {
-                if([photo isKindOfClass:[NSDictionary class]]) {
-                    NSDictionary* photoDict = (NSDictionary*) photo;
-                    NSString* farm = photoDict[@"farm"];
-                    NSString* identifier = photoDict[@"id"];
-                    NSString* secret = photoDict[@"secret"];
-                    NSString* server = photoDict[@"server"];
-                    if(farm && identifier && secret && server) {
-                        NSString* orginalUrlStr = [NSString stringWithFormat:@"http://farm%@.staticflickr.com/%@/%@_%@.jpg", farm, server, identifier, secret];
-                        NSString* thumbnailUrlStr = [NSString stringWithFormat:@"http://farm%@.staticflickr.com/%@/%@_%@_t_d.jpg", farm, server, identifier, secret];
-                        FlickrImage* image = [[FlickrImage alloc] initWithOriginalImageUrlString:orginalUrlStr withThumbnailImageUrlString:thumbnailUrlStr];
-                        [images addObject:image];
+                @autoreleasepool {
+                    if([photo isKindOfClass:[NSDictionary class]]) {
+                        NSDictionary* photoDict = (NSDictionary*) photo;
+                        NSString* farm = photoDict[@"farm"];
+                        NSString* identifier = photoDict[@"id"];
+                        NSString* secret = photoDict[@"secret"];
+                        NSString* server = photoDict[@"server"];
+                        if(farm && identifier && secret && server) {
+                            NSString* orginalUrlStr = [NSString stringWithFormat:@"http://farm%@.staticflickr.com/%@/%@_%@.jpg", farm, server, identifier, secret];
+                            NSString* thumbnailUrlStr = [NSString stringWithFormat:@"http://farm%@.staticflickr.com/%@/%@_%@_t_d.jpg", farm, server, identifier, secret];
+                            FlickrImage* image = [[FlickrImage alloc] initWithOriginalImageUrlString:orginalUrlStr withThumbnailImageUrlString:thumbnailUrlStr];
+                            [images addObject:image];
+                        }
                     }
                 }
             }

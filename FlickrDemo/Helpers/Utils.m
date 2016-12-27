@@ -16,6 +16,12 @@
 -(NSString*)upcase:(NSString *)str{
     return [str uppercaseString];
 }
+
+-(void) dispatchAfter: (NSInteger)second withHandler:(void(^)()) handler {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, second * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        handler();
+    });
+}
 #pragma mark - coding related
 +(NSString *)base64encoder:(NSString *)str{
     NSData* utf8data= [str dataUsingEncoding:NSUTF8StringEncoding];

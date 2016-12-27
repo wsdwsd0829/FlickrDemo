@@ -11,6 +11,8 @@
 
 @interface Utils : NSObject
 #pragma mark - coding related
+-(void) dispatchAfter: (NSInteger)second withHandler:(void(^)()) handler;
+
 + (NSString*)base64encoder:(NSString*)str;
 +(NSString *)base64decoder:(NSString *)str;
 +(NSString*)urlEncode: (NSString*)str;
