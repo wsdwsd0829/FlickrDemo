@@ -15,6 +15,14 @@
 		0D8AD1851E10E433008D5CCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D8AD1831E10E433008D5CCB /* LaunchScreen.storyboard */; };
 		0D8AD1901E10E433008D5CCB /* FlickrDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD18F1E10E433008D5CCB /* FlickrDemoTests.m */; };
 		0D8AD19B1E10E433008D5CCB /* FlickrDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD19A1E10E433008D5CCB /* FlickrDemoUITests.m */; };
+		0D8AD1AA1E10E4A8008D5CCB /* ApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1A91E10E4A8008D5CCB /* ApiClient.m */; };
+		0D8AD1AE1E10E50C008D5CCB /* FlickrNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1AD1E10E50C008D5CCB /* FlickrNetworkService.m */; };
+		0D8AD1B51E10EECF008D5CCB /* FlickrImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1B41E10EECF008D5CCB /* FlickrImage.m */; };
+		0D8AD1B81E10F322008D5CCB /* FlickrImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1B71E10F322008D5CCB /* FlickrImageParser.m */; };
+		0D8AD1BF1E10F7FA008D5CCB /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1BE1E10F7FA008D5CCB /* Utils.m */; };
+		0DFC96EC1E11EC6D001EFDAD /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC96EB1E11EC6D001EFDAD /* ImageCell.m */; };
+		49D116AB5AEE6331D4C9409B /* Pods_FlickrDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8297A017918F3634F27686F /* Pods_FlickrDemo.framework */; };
+		A7B9A9DD3147CC7095C82F26 /* Pods_FlickrDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40165AD03C992FCC3B7FCB48 /* Pods_FlickrDemoTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +59,28 @@
 		0D8AD1961E10E433008D5CCB /* FlickrDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlickrDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8AD19A1E10E433008D5CCB /* FlickrDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlickrDemoUITests.m; sourceTree = "<group>"; };
 		0D8AD19C1E10E433008D5CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D8AD1A81E10E4A8008D5CCB /* ApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApiClient.h; path = Managers/Network/ApiClient.h; sourceTree = "<group>"; };
+		0D8AD1A91E10E4A8008D5CCB /* ApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApiClient.m; path = Managers/Network/ApiClient.m; sourceTree = "<group>"; };
+		0D8AD1AC1E10E50C008D5CCB /* FlickrNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrNetworkService.h; path = Managers/Network/FlickrNetworkService.h; sourceTree = "<group>"; };
+		0D8AD1AD1E10E50C008D5CCB /* FlickrNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrNetworkService.m; path = Managers/Network/FlickrNetworkService.m; sourceTree = "<group>"; };
+		0D8AD1B31E10EECF008D5CCB /* FlickrImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrImage.h; path = Models/FlickrImage.h; sourceTree = "<group>"; };
+		0D8AD1B41E10EECF008D5CCB /* FlickrImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrImage.m; path = Models/FlickrImage.m; sourceTree = "<group>"; };
+		0D8AD1B61E10F322008D5CCB /* FlickrImageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrImageParser.h; path = Managers/Network/FlickrImageParser.h; sourceTree = "<group>"; };
+		0D8AD1B71E10F322008D5CCB /* FlickrImageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrImageParser.m; path = Managers/Network/FlickrImageParser.m; sourceTree = "<group>"; };
+		0D8AD1BD1E10F7FA008D5CCB /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Helpers/Utils.h; sourceTree = "<group>"; };
+		0D8AD1BE1E10F7FA008D5CCB /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = Helpers/Utils.m; sourceTree = "<group>"; };
+		0DFC96EA1E11EC6D001EFDAD /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCell.h; path = Views/ImageCell.h; sourceTree = "<group>"; };
+		0DFC96EB1E11EC6D001EFDAD /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageCell.m; path = Views/ImageCell.m; sourceTree = "<group>"; };
+		0DFC96ED1E11F701001EFDAD /* FlickrRecentImageServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrRecentImageServiceProtocol.h; path = Managers/Network/FlickrRecentImageServiceProtocol.h; sourceTree = "<group>"; };
+		0DFC96EE1E11F72E001EFDAD /* FlickrInterestingImageServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrInterestingImageServiceProtocol.h; path = Managers/Network/FlickrInterestingImageServiceProtocol.h; sourceTree = "<group>"; };
+		0DFC96EF1E11FE02001EFDAD /* FlickrNetworkServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrNetworkServiceProtocol.h; path = Managers/Network/FlickrNetworkServiceProtocol.h; sourceTree = "<group>"; };
+		0DFC96F01E1203EB001EFDAD /* ApiClientProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApiClientProtocol.h; path = Managers/Network/ApiClientProtocol.h; sourceTree = "<group>"; };
+		1E823D6942BD4948D3833D15 /* Pods-FlickrDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickrDemo/Pods-FlickrDemo.release.xcconfig"; sourceTree = "<group>"; };
+		40165AD03C992FCC3B7FCB48 /* Pods_FlickrDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickrDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9631C1EB3DD8C92A5C5FE43E /* Pods-FlickrDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlickrDemoTests/Pods-FlickrDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C4B1396BA102517CDA314069 /* Pods-FlickrDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlickrDemo/Pods-FlickrDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		F1438C4E3C50B76F12A6178E /* Pods-FlickrDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickrDemoTests/Pods-FlickrDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		F8297A017918F3634F27686F /* Pods_FlickrDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickrDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49D116AB5AEE6331D4C9409B /* Pods_FlickrDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7B9A9DD3147CC7095C82F26 /* Pods_FlickrDemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +117,8 @@
 				0D8AD18E1E10E433008D5CCB /* FlickrDemoTests */,
 				0D8AD1991E10E433008D5CCB /* FlickrDemoUITests */,
 				0D8AD1731E10E432008D5CCB /* Products */,
+				77FC0A32D708CC4A249C0E74 /* Pods */,
+				DE347255B2CB403777D40B9C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +135,10 @@
 		0D8AD1741E10E432008D5CCB /* FlickrDemo */ = {
 			isa = PBXGroup;
 			children = (
+				0DFC96E91E11EC49001EFDAD /* ImageCell */,
+				0D8AD1B91E10F7D3008D5CCB /* Helpers */,
+				0D8AD1B21E10EEB2008D5CCB /* Models */,
+				0D8AD1AB1E10E4AF008D5CCB /* Managers */,
 				0D8AD1781E10E432008D5CCB /* AppDelegate.h */,
 				0D8AD1791E10E432008D5CCB /* AppDelegate.m */,
 				0D8AD17B1E10E432008D5CCB /* ViewController.h */,
@@ -140,6 +178,86 @@
 			path = FlickrDemoUITests;
 			sourceTree = "<group>";
 		};
+		0D8AD1AB1E10E4AF008D5CCB /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0D8AD1AF1E10E510008D5CCB /* Network */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		0D8AD1AF1E10E510008D5CCB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0D8AD1B01E10E535008D5CCB /* Protocol */,
+				0D8AD1A81E10E4A8008D5CCB /* ApiClient.h */,
+				0D8AD1A91E10E4A8008D5CCB /* ApiClient.m */,
+				0D8AD1AC1E10E50C008D5CCB /* FlickrNetworkService.h */,
+				0D8AD1AD1E10E50C008D5CCB /* FlickrNetworkService.m */,
+				0D8AD1B61E10F322008D5CCB /* FlickrImageParser.h */,
+				0D8AD1B71E10F322008D5CCB /* FlickrImageParser.m */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		0D8AD1B01E10E535008D5CCB /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				0DFC96ED1E11F701001EFDAD /* FlickrRecentImageServiceProtocol.h */,
+				0DFC96EE1E11F72E001EFDAD /* FlickrInterestingImageServiceProtocol.h */,
+				0DFC96EF1E11FE02001EFDAD /* FlickrNetworkServiceProtocol.h */,
+				0DFC96F01E1203EB001EFDAD /* ApiClientProtocol.h */,
+			);
+			name = Protocol;
+			sourceTree = "<group>";
+		};
+		0D8AD1B21E10EEB2008D5CCB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0D8AD1B31E10EECF008D5CCB /* FlickrImage.h */,
+				0D8AD1B41E10EECF008D5CCB /* FlickrImage.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0D8AD1B91E10F7D3008D5CCB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0D8AD1BD1E10F7FA008D5CCB /* Utils.h */,
+				0D8AD1BE1E10F7FA008D5CCB /* Utils.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		0DFC96E91E11EC49001EFDAD /* ImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				0DFC96EA1E11EC6D001EFDAD /* ImageCell.h */,
+				0DFC96EB1E11EC6D001EFDAD /* ImageCell.m */,
+			);
+			name = ImageCell;
+			sourceTree = "<group>";
+		};
+		77FC0A32D708CC4A249C0E74 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C4B1396BA102517CDA314069 /* Pods-FlickrDemo.debug.xcconfig */,
+				1E823D6942BD4948D3833D15 /* Pods-FlickrDemo.release.xcconfig */,
+				9631C1EB3DD8C92A5C5FE43E /* Pods-FlickrDemoTests.debug.xcconfig */,
+				F1438C4E3C50B76F12A6178E /* Pods-FlickrDemoTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DE347255B2CB403777D40B9C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F8297A017918F3634F27686F /* Pods_FlickrDemo.framework */,
+				40165AD03C992FCC3B7FCB48 /* Pods_FlickrDemoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +265,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D8AD19F1E10E433008D5CCB /* Build configuration list for PBXNativeTarget "FlickrDemo" */;
 			buildPhases = (
+				24620E0F57B7D30066D58F73 /* [CP] Check Pods Manifest.lock */,
 				0D8AD16E1E10E432008D5CCB /* Sources */,
 				0D8AD16F1E10E432008D5CCB /* Frameworks */,
 				0D8AD1701E10E432008D5CCB /* Resources */,
+				2126FDD7F48AABD8CE8F3656 /* [CP] Embed Pods Frameworks */,
+				2B5EEC7E9A88092343B78225 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,9 +285,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D8AD1A21E10E433008D5CCB /* Build configuration list for PBXNativeTarget "FlickrDemoTests" */;
 			buildPhases = (
+				76173DCD8D80436EB38E9440 /* [CP] Check Pods Manifest.lock */,
 				0D8AD1871E10E433008D5CCB /* Sources */,
 				0D8AD1881E10E433008D5CCB /* Frameworks */,
 				0D8AD1891E10E433008D5CCB /* Resources */,
+				88F099BCB3AD10F6B774C21B /* [CP] Embed Pods Frameworks */,
+				45FA21C2DB7C9DD905766D51 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,14 +395,113 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2126FDD7F48AABD8CE8F3656 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickrDemo/Pods-FlickrDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		24620E0F57B7D30066D58F73 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2B5EEC7E9A88092343B78225 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickrDemo/Pods-FlickrDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45FA21C2DB7C9DD905766D51 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickrDemoTests/Pods-FlickrDemoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76173DCD8D80436EB38E9440 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		88F099BCB3AD10F6B774C21B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickrDemoTests/Pods-FlickrDemoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0D8AD16E1E10E432008D5CCB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D8AD1B51E10EECF008D5CCB /* FlickrImage.m in Sources */,
 				0D8AD17D1E10E432008D5CCB /* ViewController.m in Sources */,
 				0D8AD17A1E10E432008D5CCB /* AppDelegate.m in Sources */,
+				0D8AD1BF1E10F7FA008D5CCB /* Utils.m in Sources */,
 				0D8AD1771E10E432008D5CCB /* main.m in Sources */,
+				0D8AD1B81E10F322008D5CCB /* FlickrImageParser.m in Sources */,
+				0D8AD1AA1E10E4A8008D5CCB /* ApiClient.m in Sources */,
+				0DFC96EC1E11EC6D001EFDAD /* ImageCell.m in Sources */,
+				0D8AD1AE1E10E50C008D5CCB /* FlickrNetworkService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +648,7 @@
 		};
 		0D8AD1A01E10E433008D5CCB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4B1396BA102517CDA314069 /* Pods-FlickrDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9MKJC68VMT;
@@ -437,6 +661,7 @@
 		};
 		0D8AD1A11E10E433008D5CCB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E823D6942BD4948D3833D15 /* Pods-FlickrDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9MKJC68VMT;
@@ -449,6 +674,7 @@
 		};
 		0D8AD1A31E10E433008D5CCB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9631C1EB3DD8C92A5C5FE43E /* Pods-FlickrDemoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 9MKJC68VMT;
@@ -462,6 +688,7 @@
 		};
 		0D8AD1A41E10E433008D5CCB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1438C4E3C50B76F12A6178E /* Pods-FlickrDemoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 9MKJC68VMT;
@@ -516,6 +743,7 @@
 				0D8AD1A11E10E433008D5CCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D8AD1A21E10E433008D5CCB /* Build configuration list for PBXNativeTarget "FlickrDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +752,7 @@
 				0D8AD1A41E10E433008D5CCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D8AD1A51E10E433008D5CCB /* Build configuration list for PBXNativeTarget "FlickrDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +761,7 @@
 				0D8AD1A71E10E433008D5CCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
