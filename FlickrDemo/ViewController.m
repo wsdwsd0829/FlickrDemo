@@ -48,7 +48,7 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
 }
 
 -(void)setupViewModel {
-    id weakSelf = self;
+    ViewController* __weak weakSelf = self;
     self.viewModel.updateBlock = ^() {
         ViewController* strongSelf = weakSelf;
         [strongSelf.collectionView reloadData];
@@ -81,10 +81,10 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
 -(void) p_configCell:(UICollectionViewCell*)cell forItemAtIndexPath:(NSIndexPath*) indexPath {
     if([cell isKindOfClass:[ImageCell class]]) {
         ImageCell* imageCell = (ImageCell*)cell;
-        //use SDWebImage
+        //use SDWebImage and comment below for better performance
          //[imageCell.imageView sd_setImageWithURL:[NSURL URLWithString:  self.viewModel.images[indexPath.row].originalImageUrlString] placeholderImage:[UIImage imageNamed:@"placeholder"]];
         
-        //NSLog(@"beforeIndex %ld", (long)indexPath.row);
+        //Handle image caching myself
         if(self.viewModel.images[indexPath.row].image) {
             imageCell.imageView.image = self.viewModel.images[indexPath.row].image;
         } else {
@@ -97,7 +97,6 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
                 }
             }];
         }
-        
     }
     
     //NSLog(@"indexPath: %@", indexPath);

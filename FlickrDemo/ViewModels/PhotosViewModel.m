@@ -114,11 +114,10 @@
     }
 }
 
--(void)loadImageForIndexPath:(NSIndexPath*)indexPath  withHandler:(void(^)())handler {
+-(void)loadImageForIndexPath:(NSIndexPath*)indexPath withHandler:(void(^)())handler {
     //!!! need capture imageService so it not change in block
     id<FlickrNetworkServiceProtocol> imageDownloadService = imageService;
     NSString* urlString = self.images[indexPath.row].originalImageUrlString;
-    
     [imageDownloadService loadImageWithUrlString:urlString withHandler:^(NSData *data) {
         if(imageDownloadService == recentImagesService) {
             if(!recentImages[indexPath.row].image) {
