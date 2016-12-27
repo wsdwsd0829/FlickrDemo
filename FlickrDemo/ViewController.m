@@ -93,7 +93,14 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
                 ImageCell *updateCell = (id)[self.collectionView cellForItemAtIndexPath:indexPath];
                // NSLog(@"afterIndex %ld", (long)indexPath.row);
                 if (updateCell){
-                    imageCell.imageView.image = self.viewModel.images[indexPath.row].image;
+                    //some annimation effect, Bug: not always animate
+                    [UIView transitionWithView:imageCell.imageView
+                                      duration:1.0f
+                                       options:UIViewAnimationOptionTransitionCrossDissolve
+                                    animations:^{
+                                        imageCell.imageView.image = self.viewModel.images[indexPath.row].image;
+                                    } completion:nil];
+                    //imageCell.imageView.image = self.viewModel.images[indexPath.row].image;
                 }
             }];
         }
