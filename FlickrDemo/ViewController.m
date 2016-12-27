@@ -81,7 +81,23 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
 -(void) p_configCell:(UICollectionViewCell*)cell forItemAtIndexPath:(NSIndexPath*) indexPath {
     if([cell isKindOfClass:[ImageCell class]]) {
         ImageCell* imageCell = (ImageCell*)cell;
-        [imageCell.imageView sd_setImageWithURL:[NSURL URLWithString:  self.viewModel.images[indexPath.row].originalImageUrlString] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        //use SDWebImage
+         //[imageCell.imageView sd_setImageWithURL:[NSURL URLWithString:  self.viewModel.images[indexPath.row].originalImageUrlString] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        
+        //NSLog(@"beforeIndex %ld", (long)indexPath.row);
+        if(self.viewModel.images[indexPath.row].image) {
+            imageCell.imageView.image = self.viewModel.images[indexPath.row].image;
+        } else {
+            [self.viewModel loadImageForIndexPath:indexPath withHandler:^() {
+                //make sure cell still visible
+                ImageCell *updateCell = (id)[self.collectionView cellForItemAtIndexPath:indexPath];
+               // NSLog(@"afterIndex %ld", (long)indexPath.row);
+                if (updateCell){
+                    imageCell.imageView.image = self.viewModel.images[indexPath.row].image;
+                }
+            }];
+        }
+        
     }
     
     //NSLog(@"indexPath: %@", indexPath);

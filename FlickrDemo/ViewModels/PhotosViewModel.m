@@ -114,6 +114,28 @@
     }
 }
 
+-(void)loadImageForIndexPath:(NSIndexPath*)indexPath  withHandler:(void(^)())handler {
+    //!!! need capture imageService so it not change in block
+    id<FlickrNetworkServiceProtocol> imageDownloadService = imageService;
+    NSString* urlString = self.images[indexPath.row].originalImageUrlString;
+    
+    [imageDownloadService loadImageWithUrlString:urlString withHandler:^(NSData *data) {
+        if(imageDownloadService == recentImagesService) {
+            if(!recentImages[indexPath.row].image) {
+                recentImages[indexPath.row].image = [UIImage imageWithData:data];
+                handler();
+                //!!! do not save image twice, and do not update image multiple times
+            }
+        } else {
+            if(!interestingImages[indexPath.row].image) {
+                interestingImages[indexPath.row].image = [UIImage imageWithData:data];
+                handler();
+            }
+        }
+        
+    }];
+}
+
 //to initialize loading;
 -(void) p_initializeLoading{
     [recentImagesService loadRecentImages:^(NSArray *imgs, NSError *error) {

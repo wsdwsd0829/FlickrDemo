@@ -11,6 +11,8 @@
 typedef void(^FlickrImageListHandler)(NSArray* images, NSError* error);
 
 @protocol FlickrNetworkServiceProtocol <NSObject>
+
+-(void)loadImageWithUrlString: (NSString*) urlString withHandler:(void(^)(NSData* data))handler;
 //recent
 -(void) loadRecentImages: (FlickrImageListHandler) handler;
 //interesting

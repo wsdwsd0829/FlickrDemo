@@ -9,5 +9,8 @@
 #import "ImageCell.h"
 
 @implementation ImageCell
-
+-(void)prepareForReuse{
+    [super prepareForReuse];
+    self.imageView.image = nil;
+}
 @end

@@ -37,18 +37,30 @@ NSString* const apiKey = @"d5c7df3552b89d13fe311eb42715b510";
     return self;
 }
 
+-(void)loadImageWithUrlString: (NSString*) urlString withHandler:(void(^)(NSData* data))handler{
+    //GCD or Operation
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString: urlString]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            handler(imageData);
+        });
+    });
+}
+
 -(void) loadRecentImages: (FlickrImageListHandler)handler {
-    NSLog(@"Recent Images Page Num: %lu", (unsigned long)pageNum);
+   // NSLog(@"Recent Images Page Num: %lu", (unsigned long)pageNum);
     NSUInteger offset = pageCount * pageNum;
     NSString* query = [NSString stringWithFormat:@"select * from flickr.photos.recent(%ld,%ld) where api_key='%@'", (long)offset, (long)pageCount, apiKey];
     NSDictionary* params = @{@"q" : query, @"diagnostics": @"true", @"format": @"json"};
+    NSLog(@"QUERY: %@", query); //QUERY: select * from flickr.photos.recent(40,20) where api_key='d5c7df3552b89d13fe311eb42715b510'
     [self p_fetchWithParams:params withHandler:handler];
 }
 
 -(void) loadInterestingImages: (FlickrImageListHandler) handler {
-    NSLog(@"Interesting Images Page Num: %lu", (unsigned long)pageNum);
+   // NSLog(@"Interesting Images Page Num: %lu", (unsigned long)pageNum);
     NSUInteger offset = pageCount * pageNum;
     NSString* query = [NSString stringWithFormat:@"select * from flickr.photos.interestingness(%ld,%ld) where api_key='%@'", (long)offset, (long)pageCount, apiKey];
+    
     NSDictionary* params = @{@"q" : query, @"diagnostics": @"true", @"format": @"json"};
     [self p_fetchWithParams:params withHandler:handler];
 }

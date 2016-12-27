@@ -27,11 +27,10 @@
  TODO: 
     This service layer should be designed so that it could be reused if the application were to grow. It should not be tied to this particular UI.
  
-     $ replace SDWebImage
-     $ replace NetworkLayer
+    $ replace SDWebImage
+    $ replace NetworkLayer
     $ Spinner at bottom of collection view,
     $ gallary view, SDProgress on image detail loading
-
  
     $ rotation handling
  

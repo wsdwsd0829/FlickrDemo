@@ -14,6 +14,8 @@
 
 @interface FlickrNetworkService : NSObject <FlickrNetworkServiceProtocol>
 
+//load image
+-(void)loadImageWithUrlString: (NSString*) urlString withHandler:(void(^)(NSData* data))handler;
 //recent
 -(void) loadRecentImages: (FlickrImageListHandler) handler;
 //interesting

@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 @interface FlickrImage : NSObject
 
+@property (nonatomic) UIImage* image;
 @property (nonatomic, copy, readonly) NSString* originalImageUrlString;
 @property (nonatomic, copy, readonly) NSString* thumbnailImageUrlString;
 

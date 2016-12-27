@@ -16,5 +16,6 @@
 
 - (void)segmentedControlChanged:(ImageListType)type;
 -(void) loadImages;
+-(void)loadImageForIndexPath:(NSIndexPath*)indexPath  withHandler:(void(^)())handler;
 @end
 
