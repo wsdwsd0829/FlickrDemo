@@ -11,5 +11,8 @@
 typedef void(^FlickrImageListHandler)(NSArray* images, NSError* error);
 
 @protocol FlickrNetworkServiceProtocol <NSObject>
-
+//recent
+-(void) loadRecentImages: (FlickrImageListHandler) handler;
+//interesting
+-(void) loadInterestingImages: (FlickrImageListHandler) handler;
 @end

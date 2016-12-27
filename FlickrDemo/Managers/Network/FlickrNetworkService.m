@@ -13,6 +13,7 @@
 #import "FlickrImageParser.h"
 //https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.interestingness%20where%20api_key%3D%27d5c7df3552b89d13fe311eb42715b510%27&diagnostics=true&format=json
 //https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.recent%20where%20api_key%3D%27d5c7df3552b89d13fe311eb42715b510%27&diagnostics=true&format=json
+NSString* const apiKey = @"d5c7df3552b89d13fe311eb42715b510";
 
 @interface FlickrNetworkService () {
     id<ApiClientProtocol> apiClient;
@@ -37,28 +38,29 @@
 }
 
 -(void) loadRecentImages: (FlickrImageListHandler)handler {
+    NSLog(@"Recent Images Page Num: %lu", (unsigned long)pageNum);
     NSUInteger offset = pageCount * pageNum;
-    NSString* query = [NSString stringWithFormat:@"select * from flickr.photos.recent(%ld,%ld) where api_key='d5c7df3552b89d13fe311eb42715b510'", (long)offset, (long)pageCount];
+    NSString* query = [NSString stringWithFormat:@"select * from flickr.photos.recent(%ld,%ld) where api_key='%@'", (long)offset, (long)pageCount, apiKey];
     NSDictionary* params = @{@"q" : query, @"diagnostics": @"true", @"format": @"json"};
     [self p_fetchWithParams:params withHandler:handler];
 }
 
 -(void) loadInterestingImages: (FlickrImageListHandler) handler {
+    NSLog(@"Interesting Images Page Num: %lu", (unsigned long)pageNum);
     NSUInteger offset = pageCount * pageNum;
-    NSString* query = [NSString stringWithFormat:@"select * from flickr.photos.interestingness(%ld,%ld) where api_key='d5c7df3552b89d13fe311eb42715b510'", (long)offset, (long)pageCount];
+    NSString* query = [NSString stringWithFormat:@"select * from flickr.photos.interestingness(%ld,%ld) where api_key='%@'", (long)offset, (long)pageCount, apiKey];
     NSDictionary* params = @{@"q" : query, @"diagnostics": @"true", @"format": @"json"};
     [self p_fetchWithParams:params withHandler:handler];
 }
 
 //private method that use apiClient to fetch Data and use parser to get object (can pare async)
 -(void) p_fetchWithParams: (NSDictionary*) params withHandler:(FlickrImageListHandler) handler {
+    pageNum += 1; //how to deal wich if previous page load fails
     [apiClient fetchWithParams:params withApi: @"v1/public/yql" withHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         if (!error && ((NSHTTPURLResponse*)response).statusCode == 200) {
             [parser parseToFlickrImagesWith:responseObject withHandler: ^(NSArray* images, NSError* error) {
                 handler(images, error);
-                if(error == nil) {
-                    pageNum += 1;
-                }
+                //!!!cannot increase page num here cause, same page may load multiple times
             }];
         } else {
             //TODO: if status Code 401, need re-auth;

@@ -9,12 +9,10 @@
 #import <Foundation/Foundation.h>
 
 #import "FlickrNetworkServiceProtocol.h"
-#import "FlickrRecentImageServiceProtocol.h"
-#import "FlickrInterestingImageServiceProtocol.h"
 
 ///Flickr service to fetch data
 
-@interface FlickrNetworkService : NSObject <FlickrRecentImageServiceProtocol,FlickrInterestingImageServiceProtocol>
+@interface FlickrNetworkService : NSObject <FlickrNetworkServiceProtocol>
 
 //recent
 -(void) loadRecentImages: (FlickrImageListHandler) handler;

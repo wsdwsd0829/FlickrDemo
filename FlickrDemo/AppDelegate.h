@@ -15,19 +15,34 @@
     3. API calls cannot be blocking (i.e., should be asynchronous).
     4. The application main thread (i.e., UI thread) needs to be notified once the call response is ready, so that it can refresh its display. 
     5. For this exercise, the UI should use a collection view to showcase images.
+ --------------------------
+    6. view model
+    7. favor protocols
+    8. error handling through MessageManager
+ 
  */
 /*
  TODO: 
     This service layer should be designed so that it could be reused if the application were to grow. It should not be tied to this particular UI.
-    $ ApiClient Protocol
+ 
+     $ Remember Offset before switch, recover after switch
+     $ Remember User selection
+
+     $ replace SDWebImage
+     $ replace NetworkLayer
+ 
     $ Spinner at bottom of collection view,
-    $ view model
-    $ Remember Offset before switch, recover after switch
-    $ Remember User selection
     $ gallary view, SDProgress on image detail loading
-    $ replace SDWebImage
-    $ replace NetworkLayer
-    $ error handling
+
+ 
+    $ rotation handling
+ 
+    $ reachability
+    $ low network testing
+ 
+    $ test code
+    $ create template
+ 
     //other ideas out 2 collection views
  */
 
