@@ -5,11 +5,11 @@
 //  Created by Sida Wang on 12/25/16.
 //  Copyright © 2016 Sida Wang. All rights reserved.
 //
+#import "ApiClientProtocol.h"
+#import "ParserProtocol.h"
 
 #import "FlickrNetworkService.h"
-#import "ApiClientProtocol.h"
 #import "ApiClient.h"
-
 #import "FlickrImageParser.h"
 //https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.interestingness%20where%20api_key%3D%27d5c7df3552b89d13fe311eb42715b510%27&diagnostics=true&format=json
 //https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.recent%20where%20api_key%3D%27d5c7df3552b89d13fe311eb42715b510%27&diagnostics=true&format=json
@@ -17,7 +17,7 @@ NSString* const apiKey = @"d5c7df3552b89d13fe311eb42715b510";
 
 @interface FlickrNetworkService () {
     id<ApiClientProtocol> apiClient;
-    FlickrImageParser* parser;
+    id<ParserProtocol> parser;
     NSUInteger pageNum;
     NSUInteger pageCount;
 }

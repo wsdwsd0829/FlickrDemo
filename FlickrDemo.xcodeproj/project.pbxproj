@@ -86,6 +86,7 @@
 		0DFC97071E122439001EFDAD /* DemoConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoConstants.h; path = Helpers/DemoConstants.h; sourceTree = "<group>"; };
 		0DFC97081E122439001EFDAD /* DemoConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoConstants.m; path = Helpers/DemoConstants.m; sourceTree = "<group>"; };
 		0DFC970A1E1224AE001EFDAD /* MessageManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageManagerProtocol.h; path = Managers/MessageManager/MessageManagerProtocol.h; sourceTree = "<group>"; };
+		0DFC970B1E1229A6001EFDAD /* ParserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParserProtocol.h; path = Managers/Network/ParserProtocol.h; sourceTree = "<group>"; };
 		1E823D6942BD4948D3833D15 /* Pods-FlickrDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickrDemo/Pods-FlickrDemo.release.xcconfig"; sourceTree = "<group>"; };
 		40165AD03C992FCC3B7FCB48 /* Pods_FlickrDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickrDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9631C1EB3DD8C92A5C5FE43E /* Pods-FlickrDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlickrDemoTests/Pods-FlickrDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -218,6 +219,7 @@
 			children = (
 				0DFC96EF1E11FE02001EFDAD /* FlickrNetworkServiceProtocol.h */,
 				0DFC96F01E1203EB001EFDAD /* ApiClientProtocol.h */,
+				0DFC970B1E1229A6001EFDAD /* ParserProtocol.h */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
