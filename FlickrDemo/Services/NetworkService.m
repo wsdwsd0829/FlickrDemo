@@ -46,14 +46,19 @@ NSString* const apiKey = @"d5c7df3552b89d13fe311eb42715b510";
     return self;
 }
 
--(void)loadImageWithUrlString: (NSString*) urlString withHandler:(void(^)(NSData* data))handler{
+-(void)loadImageWithUrlString: (NSString*) urlString withHandler:(void(^)(NSData* data, NSError* error))handler{
     //GCD or Operation
+    /*
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString: urlString]];
         dispatch_async(dispatch_get_main_queue(), ^{
             handler(imageData);
         });
     });
+     */
+    [apiClient fetchWithUrlString:urlString withHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        handler(responseObject, error);
+    }];
 }
 
 -(void)loadPhotosWithType:(ImageListType)type withHandler:(FlickrImageListHandler)handler {

@@ -10,6 +10,8 @@
 
 @protocol CacheServiceProtocol <NSObject>
 
++(void) setSharedCacheService;
+
 -(UIImage*) imageForName:(NSString*)name;
 -(void) setImage:(UIImage*)image forName:(NSString*) name;
 

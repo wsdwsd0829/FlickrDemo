@@ -26,6 +26,18 @@ typedef NS_ENUM(NSUInteger, RequestMethod) {
     return apiClient;
 }
 
+-(void) fetchWithUrlString:(NSString*) urlString withHandler:(HttpResponseHandler) handler {
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    NSMutableURLRequest* request = [self p_requestSerializerWithMethod: GET host: urlString params: nil error: nil];
+    //solve ContentType image/jpeg not accept
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        handler(response, responseObject, error);
+    }];
+    [dataTask resume];
+}
+
 -(void) fetchWithParams:(NSDictionary*) params withApi: (NSString*)api withHandler:(HttpResponseHandler) handler {
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     

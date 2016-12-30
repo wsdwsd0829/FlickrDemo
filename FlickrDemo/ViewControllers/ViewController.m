@@ -37,12 +37,6 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
     UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc] init];
     self.collectionView.collectionViewLayout = flowLayout;
 
-    //setup UI
-    //this could change enum order and do not change storyboard to swap segment position
-    //[self.segmentedControl setSelectedSegmentIndex:UISegmentedControlNoSegment];
-//    [self.segmentedControl setTitle:@"Recent" forSegmentAtIndex:(int)ImageListTypeRecent];
-//    [self.segmentedControl setTitle:@"Interesting" forSegmentAtIndex:(int)ImageListTypeInteresting];
-    
     //setup Notifications
     [self setupNotifications];
     //setup dependencies: ViewModel
@@ -91,6 +85,7 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
     }
 }
 
+//reload to trigger network reloading from Offline to onLine
 -(void)networkChanged:(NSNotification*) notification {
     [self.collectionView reloadData];
 }
@@ -112,12 +107,12 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
         imageCell.imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageCell.imageView.layer.masksToBounds=YES;
         //use SDWebImage and comment below for better performance
-        [imageCell.imageView sd_setImageWithURL:[NSURL URLWithString:  self.viewModel.photos[indexPath.row].originalImageUrlString] placeholderImage:[UIImage imageNamed:@"placeholder"]];
-        /*
+        //[imageCell.imageView sd_setImageWithURL:[NSURL URLWithString:  self.viewModel.photos[indexPath.row].originalImageUrlString] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        
         imageCell.imageView.image = [self.viewModel.cacheService imageForName:self.viewModel.photos[indexPath.row].originalImageUrlString];
         //Handle image caching in ViewModel layer
-        [self.viewModel loadImageForIndexPath:indexPath withHandler:^(UIImage* image) {
-            //make sure cell still visible
+        [self.viewModel loadImageForIndexPath:indexPath withHandler:^(UIImage *image) {
+                 //make sure cell still visible
             ImageCell *updateCell = (id)[self.collectionView cellForItemAtIndexPath:indexPath];
             if (updateCell){
                 //some annimation effect, Bug: not always animate
@@ -129,8 +124,6 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
                                 } completion:nil];
             }
         }];
-        
-        */
     }
     
     //NSLog(@"indexPath: %@", indexPath);

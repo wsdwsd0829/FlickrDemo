@@ -79,7 +79,7 @@
 }
 
 -(void) loadImages {
-    [networkService loadPhotosWithType:self.type withHandler:^(NSArray *imgs, NSError *error) {
+    [networkService loadPhotosWithType:self.type withHandler:^(NSArray *imgs, NSError* error) {
         if(!error) {
             if(imgs.count > 0) {
                 [_photos addObjectsFromArray:imgs];
@@ -92,11 +92,15 @@
 }
 
 -(void)loadImageForIndexPath:(NSIndexPath*)indexPath withHandler:(void(^)(UIImage* image))handler {
-    //!!! need capture imageService so it not change in block
     NSString* urlString = self.photos[indexPath.row].originalImageUrlString;
     UIImage* img = [self.cacheService imageForName:urlString];
     if(!img) {
-        [networkService loadImageWithUrlString: urlString withHandler:^(NSData *data) {
+        [networkService loadImageWithUrlString: urlString withHandler:^(NSData *data, NSError* error) {
+            if(error) {
+                //will often report host not exist
+                [self p_handleError:error];
+                return;
+            }
             UIImage* newImage = [UIImage imageWithData:data];
             [self.cacheService setImage: newImage forName:urlString];
             handler(newImage);
@@ -105,19 +109,22 @@
         handler(img);
     }
 }
+
 -(void)loadImageWithUrlString: urlString withHandler:(void(^)(UIImage* image))handler  {
     UIImage* img = [self.cacheService imageForName:urlString];
     if(img) {
         handler(img);
         return;
     }
-    [networkService loadImageWithUrlString: urlString withHandler:^(NSData *data) {
+    [networkService loadImageWithUrlString: urlString withHandler:^(NSData *data, NSError* error) {
+        if(error) {
+            [self p_handleError:error];
+            return;
+        }
         if(data) {
             UIImage* newImage = [UIImage imageWithData:data];
             if(newImage) {
                 handler(newImage);
-            }
-            if(urlString != nil){
                 [self.cacheService setImage: newImage forName:urlString];
             }
         }

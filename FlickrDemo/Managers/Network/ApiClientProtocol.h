@@ -14,6 +14,8 @@ typedef void(^HttpResponseHandler)(NSURLResponse *response, id responseObject, N
 
 +(instancetype) defaultClient;
 
+-(void) fetchWithUrlString:(NSString*) urlString withHandler:(HttpResponseHandler) handler;
+
 -(void) fetchWithParams:(NSDictionary*) params withApi: (NSString*)api withHandler:(HttpResponseHandler) handler;
 
 -(void) postFormWithParams: (NSDictionary*) params withApi: (NSString*)api withHandler: (HttpResponseHandler) handler;

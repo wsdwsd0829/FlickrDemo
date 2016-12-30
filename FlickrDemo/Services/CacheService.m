@@ -7,17 +7,29 @@
 //
 
 #import "CacheService.h"
+/*
+ ??? on simulator
+ netcore_create_control_socket socket(PF_SYSTEM, SOCK_DGRAM, SYSPROTO_CONTROL) failed: [24] Too many open files, dumping backtrace:
+ */
+
 @interface CacheService() {
-    NSMutableDictionary* productImageCache;
+    //NSMutableDictionary* productImageCache;
+    NSCache* productImageCache;
 }
 @end
 @implementation CacheService
+
+//this will set NSURLCache globally and work with nsurlsession
++(void) setSharedCacheService {
+    NSURLCache* urlCache = [[NSURLCache alloc] initWithMemoryCapacity:40*1024*1024 diskCapacity:100*1024*1024 diskPath:@"diskpath"];
+    [NSURLCache setSharedURLCache:urlCache];
+}
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        productImageCache = [[NSMutableDictionary alloc] init];
+        productImageCache = [[NSCache alloc] init]; // [[NSMutableDictionary alloc] init];//
     }
     return self;
 }
@@ -27,7 +39,9 @@
 }
 
 -(void) setImage:(UIImage*)image forName:(NSString*) name {
-    productImageCache[name] = image;
+    if(name != nil) {
+        [productImageCache setObject:image forKey:name];
+    }
 }
 
 @end

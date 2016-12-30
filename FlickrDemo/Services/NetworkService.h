@@ -15,10 +15,6 @@
 
 @interface NetworkService : NSObject <NetworkServiceProtocol, ReachabilityServiceProtocol>
 
-//load image
--(void)loadImageWithUrlString: (NSString*) urlString withHandler:(void(^)(NSData* data))handler;
--(void)loadPhotosWithType: (ImageListType)type withHandler:(FlickrImageListHandler) handler;
-
 //recent
 -(void) loadRecentPhotos: (FlickrImageListHandler) handler;
 //interesting
