@@ -22,6 +22,7 @@
     8. error handling through MessageManager (reusable service)
     9. Remember User selection (persist layer example)
     10. replace/mock SDWebImage (using mem cache, can delete on post Notification for each FlickrImageObject)
+    11. rotation handling
 
  */
 /*
@@ -34,12 +35,11 @@
     $ Spinner at bottom of collection view
 
     $try table view
-    $ rotation handling
  
     $ reachability
     $ low network testing
  
- $ show image with alpha
+    $ show image with alpha
     $ test code
     $ create template
  
