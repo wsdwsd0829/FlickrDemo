@@ -12,6 +12,7 @@
 		0D59DCC01E15CA9F00D46C4C /* CacheService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D59DCBF1E15CA9F00D46C4C /* CacheService.m */; };
 		0D59DCC81E15E1F400D46C4C /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D59DCC71E15E1F400D46C4C /* TabBarViewController.m */; };
 		0D59DCCB1E15E6C100D46C4C /* Utils+DDHUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D59DCCA1E15E6C100D46C4C /* Utils+DDHUI.m */; };
+		0D7DBC8C1E16050B00FC0592 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DBC8B1E16050B00FC0592 /* Reachability.m */; };
 		0D8AD1771E10E432008D5CCB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1761E10E432008D5CCB /* main.m */; };
 		0D8AD17A1E10E432008D5CCB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1791E10E432008D5CCB /* AppDelegate.m */; };
 		0D8AD17D1E10E432008D5CCB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD17C1E10E432008D5CCB /* ViewController.m */; };
@@ -64,6 +65,9 @@
 		0D59DCC71E15E1F400D46C4C /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabBarViewController.m; path = ViewControllers/TabBarViewController.m; sourceTree = "<group>"; };
 		0D59DCC91E15E6C100D46C4C /* Utils+DDHUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Utils+DDHUI.h"; sourceTree = "<group>"; };
 		0D59DCCA1E15E6C100D46C4C /* Utils+DDHUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Utils+DDHUI.m"; sourceTree = "<group>"; };
+		0D7DBC8A1E16050B00FC0592 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		0D7DBC8B1E16050B00FC0592 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		0D7DBC8E1E1605CA00FC0592 /* ReachabilityServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReachabilityServiceProtocol.h; path = Managers/Network/ReachabilityServiceProtocol.h; sourceTree = "<group>"; };
 		0D8AD1721E10E432008D5CCB /* FlickrDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8AD1761E10E432008D5CCB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D8AD1781E10E432008D5CCB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -92,7 +96,7 @@
 		0D8AD1BE1E10F7FA008D5CCB /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = Helpers/Utils.m; sourceTree = "<group>"; };
 		0DFC96EA1E11EC6D001EFDAD /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCell.h; path = Views/ImageCell.h; sourceTree = "<group>"; };
 		0DFC96EB1E11EC6D001EFDAD /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageCell.m; path = Views/ImageCell.m; sourceTree = "<group>"; };
-		0DFC96EF1E11FE02001EFDAD /* FlickrNetworkServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrNetworkServiceProtocol.h; path = Managers/Network/FlickrNetworkServiceProtocol.h; sourceTree = "<group>"; };
+		0DFC96EF1E11FE02001EFDAD /* NetworkServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkServiceProtocol.h; path = Managers/Network/NetworkServiceProtocol.h; sourceTree = "<group>"; };
 		0DFC96F01E1203EB001EFDAD /* ApiClientProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApiClientProtocol.h; path = Managers/Network/ApiClientProtocol.h; sourceTree = "<group>"; };
 		0DFC96F81E121603001EFDAD /* PhotosViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotosViewModel.h; path = ViewModels/PhotosViewModel.h; sourceTree = "<group>"; };
 		0DFC96F91E121603001EFDAD /* PhotosViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotosViewModel.m; path = ViewModels/PhotosViewModel.m; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 		0D59DCBD1E15CA9800D46C4C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0D7DBC8D1E16057200FC0592 /* Network */,
 				0D59DCC11E15D15600D46C4C /* CacheService */,
 				0DFC96FB1E122131001EFDAD /* MessageService */,
 			);
@@ -175,6 +180,22 @@
 				0D59DCC21E15D27A00D46C4C /* CacheServiceProtocol.h */,
 			);
 			name = CacheService;
+			sourceTree = "<group>";
+		};
+		0D7DBC891E1604F800FC0592 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D7DBC8A1E16050B00FC0592 /* Reachability.h */,
+				0D7DBC8B1E16050B00FC0592 /* Reachability.m */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0D7DBC8D1E16057200FC0592 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 		0D8AD1691E10E432008D5CCB = {
@@ -202,6 +223,7 @@
 		0D8AD1741E10E432008D5CCB /* FlickrDemo */ = {
 			isa = PBXGroup;
 			children = (
+				0D7DBC891E1604F800FC0592 /* Frameworks */,
 				0D59DCBD1E15CA9800D46C4C /* Services */,
 				0D59DCB61E15CA4500D46C4C /* ViewControllers */,
 				0DFC96F71E1215AC001EFDAD /* ViewModels */,
@@ -262,6 +284,7 @@
 				0D8AD1B01E10E535008D5CCB /* Protocol */,
 				0D8AD1A81E10E4A8008D5CCB /* ApiClient.h */,
 				0D8AD1A91E10E4A8008D5CCB /* ApiClient.m */,
+				0D7DBC8E1E1605CA00FC0592 /* ReachabilityServiceProtocol.h */,
 				0D8AD1AC1E10E50C008D5CCB /* NetworkService.h */,
 				0D8AD1AD1E10E50C008D5CCB /* NetworkService.m */,
 				0D8AD1B61E10F322008D5CCB /* PhotoParser.h */,
@@ -273,7 +296,7 @@
 		0D8AD1B01E10E535008D5CCB /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				0DFC96EF1E11FE02001EFDAD /* FlickrNetworkServiceProtocol.h */,
+				0DFC96EF1E11FE02001EFDAD /* NetworkServiceProtocol.h */,
 				0DFC96F01E1203EB001EFDAD /* ApiClientProtocol.h */,
 				0DFC970B1E1229A6001EFDAD /* ParserProtocol.h */,
 			);
@@ -611,6 +634,7 @@
 				0D59DCC81E15E1F400D46C4C /* TabBarViewController.m in Sources */,
 				0D8AD1AA1E10E4A8008D5CCB /* ApiClient.m in Sources */,
 				0DFC96EC1E11EC6D001EFDAD /* ImageCell.m in Sources */,
+				0D7DBC8C1E16050B00FC0592 /* Reachability.m in Sources */,
 				0D8AD1AE1E10E50C008D5CCB /* NetworkService.m in Sources */,
 				0DFC96FE1E122171001EFDAD /* MessageManager.m in Sources */,
 				0DFC970F1E122BB0001EFDAD /* PereferenceService.m in Sources */,

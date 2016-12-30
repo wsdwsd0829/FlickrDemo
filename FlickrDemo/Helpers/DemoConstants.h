@@ -18,4 +18,6 @@ extern NSString* const kErrorDisplayUserInfoKey;
 extern NSString* const kUserDefaultsImagePreference;
 extern NSString* const kUserDefaultsImageListRecent;
 extern NSString* const kUserDefaultsImageListInteresting;
+
+extern NSString* const kNetworkOfflineToOnline;
 @end

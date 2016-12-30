@@ -7,7 +7,7 @@
 //
 #import "ApiClientProtocol.h"
 #import "ParserProtocol.h"
-
+#import "Reachability.h"
 #import "NetworkService.h"
 #import "ApiClient.h"
 #import "PhotoParser.h"
@@ -18,6 +18,8 @@ NSString* const apiKey = @"d5c7df3552b89d13fe311eb42715b510";
 @interface NetworkService () {
     id<ApiClientProtocol> apiClient;
     id<ParserProtocol> parser;
+    Reachability* reachability;
+
     NSUInteger pageNum;
     NSUInteger pageCount;
 }
@@ -31,6 +33,13 @@ NSString* const apiKey = @"d5c7df3552b89d13fe311eb42715b510";
     if (self) {
         apiClient = [ApiClient defaultClient];
         parser = [[PhotoParser alloc] init]; //? can this be singeton, can I just use static method to parse data
+        
+        //setup reachability
+        reachability = [Reachability reachabilityForInternetConnection];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkChanged:) name:kReachabilityChangedNotification object:nil];
+        [reachability startNotifier];
+        
         pageNum = 0;
         pageCount = 20;
     }
@@ -98,4 +107,24 @@ NSString* const apiKey = @"d5c7df3552b89d13fe311eb42715b510";
     }];
 }
 
+//Mark: Reachability Protocol
+-(void)networkChanged:(NSNotification*) notification {
+    Reachability* reach = notification.object;
+    if([reach currentReachabilityStatus] == ReachableViaWiFi || [reach currentReachabilityStatus] == ReachableViaWWAN) {
+        NSString* isFromNotReachable = [[NSUserDefaults standardUserDefaults] stringForKey:@"kNotReachable"];
+        if([isFromNotReachable isEqualToString:@"YES"]) {
+            [self networkChangedFromOfflineToOnline:notification];
+            [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"kNotReachable"];
+        }
+    } else {
+        [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"kNotReachable"];
+    }
+}
+-(void)networkChangedFromOfflineToOnline:(NSNotification *)notification {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNetworkOfflineToOnline object: notification.object];
+}
+
+-(void)dealloc {
+    [reachability stopNotifier];
+}
 @end

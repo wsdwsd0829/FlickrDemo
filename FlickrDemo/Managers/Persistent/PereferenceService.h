@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "PersistenceProtocol.h"
 
+@protocol PereferenceServiceProtocol <NSObject>
+-(ImageListType)lastBrowsedImageListType;
+-(void) selectedImageListType:(ImageListType)type;
+@end
 
-@interface PereferenceService : NSObject<PersistenceProtocol>
-
-
+@interface PereferenceService : NSObject<PersistenceProtocol, PereferenceServiceProtocol>
 
 @end

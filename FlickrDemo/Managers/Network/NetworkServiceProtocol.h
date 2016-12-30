@@ -10,7 +10,7 @@
 
 typedef void(^FlickrImageListHandler)(NSArray* images, NSError* error);
 
-@protocol FlickrNetworkServiceProtocol <NSObject>
+@protocol NetworkServiceProtocol <NSObject>
 
 -(void)loadImageWithUrlString: (NSString*) urlString withHandler:(void(^)(NSData* data))handler;
 -(void)loadPhotosWithType: (ImageListType)type withHandler:(FlickrImageListHandler) handler;

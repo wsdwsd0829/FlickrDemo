@@ -23,7 +23,7 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *setmentedControl;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @end
 
@@ -39,16 +39,20 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
 
     //setup UI
     //this could change enum order and do not change storyboard to swap segment position
-    //[self.setmentedControl setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [self.setmentedControl setTitle:@"Recent" forSegmentAtIndex:(int)ImageListTypeRecent];
-    [self.setmentedControl setTitle:@"Interesting" forSegmentAtIndex:(int)ImageListTypeInteresting];
+    //[self.segmentedControl setSelectedSegmentIndex:UISegmentedControlNoSegment];
+//    [self.segmentedControl setTitle:@"Recent" forSegmentAtIndex:(int)ImageListTypeRecent];
+//    [self.segmentedControl setTitle:@"Interesting" forSegmentAtIndex:(int)ImageListTypeInteresting];
     
+    //setup Notifications
+    [self setupNotifications];
     //setup dependencies: ViewModel
     [self setupViewModel];
-    
     //kick off services;
     [self.viewModel loadImages];
 
+}
+-(void)setupNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkChanged:) name:kNetworkOfflineToOnline object:nil];
 }
 
 -(void)setupViewModel {
@@ -56,25 +60,39 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
     void(^updateBlock)() = ^() {
         ViewController* strongSelf = weakSelf;
         [strongSelf.collectionView reloadData];
-        
-        /*
-        switch(strongSelf.viewModel.type) {
-            case ImageListTypeRecent:
-                strongSelf.setmentedControl.selectedSegmentIndex = ImageListTypeRecent;
-                break;
-            case ImageListTypeInteresting:
-                strongSelf.setmentedControl.selectedSegmentIndex = ImageListTypeInteresting;
-                break;
-        }
-         */
     };
 
     self.viewModel.updateBlock = updateBlock;
 }
 
-//MARK: user actions
+//MARK: user actions & notifications
 - (IBAction)segmentedControlChanged:(UISegmentedControl *)sender {
-    self.tabBarController.selectedIndex = (ImageListType)(sender.selectedSegmentIndex);//(int)[self.viewModel segmentedControlChanged: ];
+    if(self.viewModel.type == ImageListTypeRecent && sender.selectedSegmentIndex == ImageListTypeInteresting) {
+        self.tabBarController.selectedIndex = ImageListTypeInteresting;
+        [self.viewModel segmentedControlChangedTo:ImageListTypeInteresting];
+    }
+    if(self.viewModel.type == ImageListTypeInteresting && sender.selectedSegmentIndex == ImageListTypeRecent) {
+        self.tabBarController.selectedIndex = ImageListTypeRecent;
+        [self.viewModel segmentedControlChangedTo:ImageListTypeRecent];
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self setupSegmentControlIndex];
+}
+
+-(void)setupSegmentControlIndex {
+    if(self.viewModel.type == ImageListTypeRecent) {
+        self.segmentedControl.selectedSegmentIndex = (int)ImageListTypeRecent;
+    }
+    if(self.viewModel.type == ImageListTypeInteresting) {
+        self.segmentedControl.selectedSegmentIndex = (int)ImageListTypeInteresting;
+    }
+}
+
+-(void)networkChanged:(NSNotification*) notification {
+    [self.collectionView reloadData];
 }
 
 //MARK: collectionView DataSource
@@ -94,8 +112,8 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
         imageCell.imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageCell.imageView.layer.masksToBounds=YES;
         //use SDWebImage and comment below for better performance
-        //[imageCell.imageView sd_setImageWithURL:[NSURL URLWithString:  self.viewModel.photos[indexPath.row].originalImageUrlString] placeholderImage:[UIImage imageNamed:@"placeholder"]];
-        
+        [imageCell.imageView sd_setImageWithURL:[NSURL URLWithString:  self.viewModel.photos[indexPath.row].originalImageUrlString] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        /*
         imageCell.imageView.image = [self.viewModel.cacheService imageForName:self.viewModel.photos[indexPath.row].originalImageUrlString];
         //Handle image caching in ViewModel layer
         [self.viewModel loadImageForIndexPath:indexPath withHandler:^(UIImage* image) {
@@ -112,7 +130,7 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
             }
         }];
         
-        
+        */
     }
     
     //NSLog(@"indexPath: %@", indexPath);

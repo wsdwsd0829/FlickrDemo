@@ -9,9 +9,12 @@
 #import "TabBarViewController.h"
 #import "ViewController.h"
 #import "PhotosViewModel.h"
+#import "PereferenceService.h"
 #import "Utils.h"
 #import "Utils+DDHUI.h"
-@interface TabBarViewController ()
+@interface TabBarViewController () {
+    id<PereferenceServiceProtocol> pereferenceService;
+}
 
 @end
 
@@ -19,9 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    pereferenceService = [[PereferenceService alloc] init];
     [self setupViewControllers];
+    [self recoverUserPereference];
     // Do any additional setup after loading the view.
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,11 +44,13 @@
     self.viewControllers = @[nvcRecent, nvcInteresting];
     
     self.tabBar.hidden = YES;
-    [vcRecent.tabBarItem setTitle:@"Recent"];
-    [vcInteresting.tabBarItem setTitle:@"Interesting"];
-    [vcRecent.tabBarItem setImage:[UIImage imageNamed:@"placeholder"]];
-    [vcInteresting.tabBarItem setImage:[UIImage imageNamed:@"placeholder"]];
 }
+
+-(void) recoverUserPereference {
+    ImageListType type = [pereferenceService lastBrowsedImageListType];
+    self.selectedIndex = type;
+}
+
 /*
 #pragma mark - Navigation
 

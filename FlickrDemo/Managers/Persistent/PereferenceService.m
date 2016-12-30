@@ -22,6 +22,27 @@
     }
     return self;
 }
+
+-(ImageListType)lastBrowsedImageListType {
+    if([[self stringForKey:kUserDefaultsImagePreference] isEqualToString:kUserDefaultsImageListInteresting]) {
+        return ImageListTypeInteresting;
+    } else {
+        return ImageListTypeRecent;
+    }
+}
+
+-(void) selectedImageListType:(ImageListType)type{
+    switch (type) {
+        case ImageListTypeRecent:
+            [self saveString:kUserDefaultsImageListRecent forKey:kUserDefaultsImagePreference];
+            break;
+            
+        case ImageListTypeInteresting:
+            [self saveString:kUserDefaultsImageListInteresting forKey:kUserDefaultsImagePreference];
+            break;
+    }
+}
+
 -(void)saveString:(NSString*)val forKey:(NSString*) key {
     [userDefaults setObject:val forKey:key];
     [userDefaults synchronize];

@@ -20,7 +20,7 @@
 
 - (instancetype)initWithType: (ImageListType) type;
 
-- (void)segmentedControlChanged:(ImageListType)type;
+- (void)segmentedControlChangedTo:(ImageListType)type;
 -(void) loadImages;
 -(void)loadImageForIndexPath:(NSIndexPath*)indexPath withHandler:(void(^)(UIImage* image))handler;
 -(void)loadImageWithUrlString: urlString withHandler:(void(^)(UIImage* image))handler;

@@ -18,10 +18,10 @@
     //private backing stores
     //for ui
     NSMutableArray<Photo*>* _photos;
-    id<FlickrNetworkServiceProtocol> networkService;
+    id<NetworkServiceProtocol> networkService;
     
     id<MessageManagerProtocol> messageManager;
-    id<PersistenceProtocol> persistenceService;
+    id<PereferenceServiceProtocol> pereferenceService;
 }
 
 @end
@@ -47,42 +47,16 @@
         //setup services
         networkService = [[NetworkService alloc] init];
         messageManager = [[MessageManager alloc] init];  //TODO: ? sharedMessageManager
-        persistenceService = [[PereferenceService alloc] init];
+        pereferenceService = [[PereferenceService alloc] init];
         self.cacheService = [[CacheService alloc] init];
         
     }
     return self;
 }
 
-/*
--(void)setupSegmentControl {
-    NSString* imageListPref = [persistenceService stringForKey:kUserDefaultsImagePreference];
-    if(!imageListPref || [imageListPref isEqualToString:kUserDefaultsImageListRecent]) {
-        imageService = recentImagesService;
-        _images = recentImages;
-        self.type = ImageListTypeRecent;
-    } else if([imageListPref isEqualToString:kUserDefaultsImageListInteresting]){
-        imageService = interestingImageService;
-        _images = interestingImages;
-        self.type = ImageListTypeInteresting;
-    }
-    [self updateBlock]; //update type in time
-    [self p_initializeLoading];
-}
- */
 
-- (void)segmentedControlChanged:(ImageListType)type {
-    self.type = type;
-    switch(type){
-        case ImageListTypeRecent:
-            [persistenceService saveString: kUserDefaultsImageListRecent forKey:kUserDefaultsImagePreference];
-            break;
-        case ImageListTypeInteresting:
-            [persistenceService saveString:kUserDefaultsImageListInteresting forKey:kUserDefaultsImagePreference];
-            break;
-    }
-    //update ui
-    self.updateBlock();
+- (void)segmentedControlChangedTo:(ImageListType)type {
+    [pereferenceService selectedImageListType:type];
 }
 
 -(Photo*)previousPhotoFor:(Photo *)photo {

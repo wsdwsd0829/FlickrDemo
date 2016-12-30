@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ReachabilityServiceProtocol.h"
 
-#import "FlickrNetworkServiceProtocol.h"
+#import "NetworkServiceProtocol.h"
 
 ///Flickr service to fetch data
 
-@interface NetworkService : NSObject <FlickrNetworkServiceProtocol>
+@interface NetworkService : NSObject <NetworkServiceProtocol, ReachabilityServiceProtocol>
 
 //load image
 -(void)loadImageWithUrlString: (NSString*) urlString withHandler:(void(^)(NSData* data))handler;
