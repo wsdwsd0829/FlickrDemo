@@ -56,24 +56,24 @@
 /* Begin PBXFileReference section */
 		0D59DCB71E15CA6300D46C4C /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageViewController.h; path = ViewControllers/PageViewController.h; sourceTree = "<group>"; };
 		0D59DCB81E15CA6300D46C4C /* PageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageViewController.m; path = ViewControllers/PageViewController.m; sourceTree = "<group>"; };
-		0D59DCBA1E15CA7100D46C4C /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		0D59DCBB1E15CA7100D46C4C /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		0D59DCBE1E15CA9F00D46C4C /* CacheService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheService.h; sourceTree = "<group>"; };
-		0D59DCBF1E15CA9F00D46C4C /* CacheService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheService.m; sourceTree = "<group>"; };
+		0D59DCBA1E15CA7100D46C4C /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = ViewControllers/DetailViewController.h; sourceTree = "<group>"; };
+		0D59DCBB1E15CA7100D46C4C /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = ViewControllers/DetailViewController.m; sourceTree = "<group>"; };
+		0D59DCBE1E15CA9F00D46C4C /* CacheService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CacheService.h; path = Services/CacheService.h; sourceTree = "<group>"; };
+		0D59DCBF1E15CA9F00D46C4C /* CacheService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CacheService.m; path = Services/CacheService.m; sourceTree = "<group>"; };
 		0D59DCC21E15D27A00D46C4C /* CacheServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CacheServiceProtocol.h; path = Services/CacheServiceProtocol.h; sourceTree = "<group>"; };
 		0D59DCC61E15E1F400D46C4C /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabBarViewController.h; path = ViewControllers/TabBarViewController.h; sourceTree = "<group>"; };
 		0D59DCC71E15E1F400D46C4C /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabBarViewController.m; path = ViewControllers/TabBarViewController.m; sourceTree = "<group>"; };
-		0D59DCC91E15E6C100D46C4C /* Utils+DDHUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Utils+DDHUI.h"; sourceTree = "<group>"; };
-		0D59DCCA1E15E6C100D46C4C /* Utils+DDHUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Utils+DDHUI.m"; sourceTree = "<group>"; };
-		0D7DBC8A1E16050B00FC0592 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		0D7DBC8B1E16050B00FC0592 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		0D7DBC8E1E1605CA00FC0592 /* ReachabilityServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReachabilityServiceProtocol.h; path = Managers/Network/ReachabilityServiceProtocol.h; sourceTree = "<group>"; };
+		0D59DCC91E15E6C100D46C4C /* Utils+DDHUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Utils+DDHUI.h"; path = "Helpers/Utils+DDHUI.h"; sourceTree = "<group>"; };
+		0D59DCCA1E15E6C100D46C4C /* Utils+DDHUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Utils+DDHUI.m"; path = "Helpers/Utils+DDHUI.m"; sourceTree = "<group>"; };
+		0D7DBC8A1E16050B00FC0592 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Services/Reachability.h; sourceTree = "<group>"; };
+		0D7DBC8B1E16050B00FC0592 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Services/Reachability.m; sourceTree = "<group>"; };
+		0D7DBC8E1E1605CA00FC0592 /* ReachabilityServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReachabilityServiceProtocol.h; path = Services/ReachabilityServiceProtocol.h; sourceTree = "<group>"; };
 		0D8AD1721E10E432008D5CCB /* FlickrDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8AD1761E10E432008D5CCB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D8AD1781E10E432008D5CCB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0D8AD1791E10E432008D5CCB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0D8AD17B1E10E432008D5CCB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0D8AD17C1E10E432008D5CCB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0D8AD17B1E10E432008D5CCB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ViewControllers/ViewController.h; sourceTree = "<group>"; };
+		0D8AD17C1E10E432008D5CCB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ViewControllers/ViewController.m; sourceTree = "<group>"; };
 		0D8AD17F1E10E432008D5CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D8AD1811E10E432008D5CCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D8AD1841E10E433008D5CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -86,28 +86,28 @@
 		0D8AD19C1E10E433008D5CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D8AD1A81E10E4A8008D5CCB /* ApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApiClient.h; path = Managers/Network/ApiClient.h; sourceTree = "<group>"; };
 		0D8AD1A91E10E4A8008D5CCB /* ApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApiClient.m; path = Managers/Network/ApiClient.m; sourceTree = "<group>"; };
-		0D8AD1AC1E10E50C008D5CCB /* NetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkService.h; path = Managers/Network/NetworkService.h; sourceTree = "<group>"; };
-		0D8AD1AD1E10E50C008D5CCB /* NetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkService.m; path = Managers/Network/NetworkService.m; sourceTree = "<group>"; };
+		0D8AD1AC1E10E50C008D5CCB /* NetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkService.h; path = Services/NetworkService.h; sourceTree = "<group>"; };
+		0D8AD1AD1E10E50C008D5CCB /* NetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkService.m; path = Services/NetworkService.m; sourceTree = "<group>"; };
 		0D8AD1B31E10EECF008D5CCB /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = Models/Photo.h; sourceTree = "<group>"; };
 		0D8AD1B41E10EECF008D5CCB /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = Models/Photo.m; sourceTree = "<group>"; };
-		0D8AD1B61E10F322008D5CCB /* PhotoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoParser.h; path = Managers/Network/PhotoParser.h; sourceTree = "<group>"; };
-		0D8AD1B71E10F322008D5CCB /* PhotoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoParser.m; path = Managers/Network/PhotoParser.m; sourceTree = "<group>"; };
+		0D8AD1B61E10F322008D5CCB /* PhotoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoParser.h; path = Services/PhotoParser.h; sourceTree = "<group>"; };
+		0D8AD1B71E10F322008D5CCB /* PhotoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoParser.m; path = Services/PhotoParser.m; sourceTree = "<group>"; };
 		0D8AD1BD1E10F7FA008D5CCB /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Helpers/Utils.h; sourceTree = "<group>"; };
 		0D8AD1BE1E10F7FA008D5CCB /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = Helpers/Utils.m; sourceTree = "<group>"; };
 		0DFC96EA1E11EC6D001EFDAD /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCell.h; path = Views/ImageCell.h; sourceTree = "<group>"; };
 		0DFC96EB1E11EC6D001EFDAD /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageCell.m; path = Views/ImageCell.m; sourceTree = "<group>"; };
-		0DFC96EF1E11FE02001EFDAD /* NetworkServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkServiceProtocol.h; path = Managers/Network/NetworkServiceProtocol.h; sourceTree = "<group>"; };
+		0DFC96EF1E11FE02001EFDAD /* NetworkServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkServiceProtocol.h; path = Services/NetworkServiceProtocol.h; sourceTree = "<group>"; };
 		0DFC96F01E1203EB001EFDAD /* ApiClientProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApiClientProtocol.h; path = Managers/Network/ApiClientProtocol.h; sourceTree = "<group>"; };
 		0DFC96F81E121603001EFDAD /* PhotosViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotosViewModel.h; path = ViewModels/PhotosViewModel.h; sourceTree = "<group>"; };
 		0DFC96F91E121603001EFDAD /* PhotosViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotosViewModel.m; path = ViewModels/PhotosViewModel.m; sourceTree = "<group>"; };
 		0DFC96FC1E122171001EFDAD /* MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageManager.h; path = Managers/MessageManager/MessageManager.h; sourceTree = "<group>"; };
 		0DFC96FD1E122171001EFDAD /* MessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageManager.m; path = Managers/MessageManager/MessageManager.m; sourceTree = "<group>"; };
-		0DFC96FF1E1221CA001EFDAD /* UIViewController+Navigations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Navigations.h"; sourceTree = "<group>"; };
-		0DFC97001E1221CA001EFDAD /* UIViewController+Navigations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Navigations.m"; sourceTree = "<group>"; };
+		0DFC96FF1E1221CA001EFDAD /* UIViewController+Navigations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Navigations.h"; path = "Helpers/UIViewController+Navigations.h"; sourceTree = "<group>"; };
+		0DFC97001E1221CA001EFDAD /* UIViewController+Navigations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Navigations.m"; path = "Helpers/UIViewController+Navigations.m"; sourceTree = "<group>"; };
 		0DFC97071E122439001EFDAD /* DemoConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoConstants.h; path = Helpers/DemoConstants.h; sourceTree = "<group>"; };
 		0DFC97081E122439001EFDAD /* DemoConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoConstants.m; path = Helpers/DemoConstants.m; sourceTree = "<group>"; };
 		0DFC970A1E1224AE001EFDAD /* MessageManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageManagerProtocol.h; path = Managers/MessageManager/MessageManagerProtocol.h; sourceTree = "<group>"; };
-		0DFC970B1E1229A6001EFDAD /* ParserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParserProtocol.h; path = Managers/Network/ParserProtocol.h; sourceTree = "<group>"; };
+		0DFC970B1E1229A6001EFDAD /* ParserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParserProtocol.h; path = Services/ParserProtocol.h; sourceTree = "<group>"; };
 		0DFC970D1E122BB0001EFDAD /* PereferenceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PereferenceService.h; path = Managers/Persistent/PereferenceService.h; sourceTree = "<group>"; };
 		0DFC970E1E122BB0001EFDAD /* PereferenceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PereferenceService.m; path = Managers/Persistent/PereferenceService.m; sourceTree = "<group>"; };
 		0DFC97101E122BD1001EFDAD /* PersistenceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersistenceProtocol.h; path = Managers/Persistent/PersistenceProtocol.h; sourceTree = "<group>"; };
@@ -194,6 +194,13 @@
 		0D7DBC8D1E16057200FC0592 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				0DFC96EF1E11FE02001EFDAD /* NetworkServiceProtocol.h */,
+				0DFC970B1E1229A6001EFDAD /* ParserProtocol.h */,
+				0D7DBC8E1E1605CA00FC0592 /* ReachabilityServiceProtocol.h */,
+				0D8AD1AC1E10E50C008D5CCB /* NetworkService.h */,
+				0D8AD1AD1E10E50C008D5CCB /* NetworkService.m */,
+				0D8AD1B61E10F322008D5CCB /* PhotoParser.h */,
+				0D8AD1B71E10F322008D5CCB /* PhotoParser.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -284,11 +291,6 @@
 				0D8AD1B01E10E535008D5CCB /* Protocol */,
 				0D8AD1A81E10E4A8008D5CCB /* ApiClient.h */,
 				0D8AD1A91E10E4A8008D5CCB /* ApiClient.m */,
-				0D7DBC8E1E1605CA00FC0592 /* ReachabilityServiceProtocol.h */,
-				0D8AD1AC1E10E50C008D5CCB /* NetworkService.h */,
-				0D8AD1AD1E10E50C008D5CCB /* NetworkService.m */,
-				0D8AD1B61E10F322008D5CCB /* PhotoParser.h */,
-				0D8AD1B71E10F322008D5CCB /* PhotoParser.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -296,9 +298,7 @@
 		0D8AD1B01E10E535008D5CCB /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				0DFC96EF1E11FE02001EFDAD /* NetworkServiceProtocol.h */,
 				0DFC96F01E1203EB001EFDAD /* ApiClientProtocol.h */,
-				0DFC970B1E1229A6001EFDAD /* ParserProtocol.h */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
