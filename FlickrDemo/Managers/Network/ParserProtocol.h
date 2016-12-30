@@ -1,6 +1,6 @@
 //
 //  ParserProtocol.h
-//  FlickrDemo
+//  
 //
 //  Created by Sida Wang on 12/26/16.
 //  Copyright © 2016 Sida Wang. All rights reserved.
@@ -10,6 +10,6 @@
 
 @protocol ParserProtocol <NSObject>
 
--(void)parseToFlickrImagesWith: (id) responseObject withHandler: (void(^)(NSArray* images, NSError* error)) handler;
+-(void)parse: (id) responseObject withHandler: (void(^)(NSArray* objects, NSError* error)) handler;
 
 @end

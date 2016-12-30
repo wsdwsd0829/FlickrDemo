@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="puB-d9-s2Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Tke-ay-mTP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -31,7 +33,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="s3C-sv-9Sr" customClass="ImageCell">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="ImageCell" id="s3C-sv-9Sr" customClass="ImageCell">
                                         <rect key="frame" x="0.0" y="0.0" width="153" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -85,25 +87,83 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+            <point key="canvasLocation" x="3188" y="-63.418290854572717"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="RPy-MT-Rp9">
+        <!--Detail View Controller-->
+        <scene sceneID="I6N-mf-mXk">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="puB-d9-s2Z" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uVP-v0-Vqp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController storyboardIdentifier="DetailViewController" id="olK-27-oyG" customClass="DetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="klh-Ll-4z6"/>
+                        <viewControllerLayoutGuide type="bottom" id="R8l-Qf-OS1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wqa-Vi-gbT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1W6-RF-4c0">
+                                <rect key="frame" x="0.0" y="111" width="375" height="445"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycY-H8-cCc">
+                                <rect key="frame" x="16" y="28" width="343" height="73"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="1W6-RF-4c0" secondAttribute="trailing" id="9as-F7-TEL"/>
+                            <constraint firstItem="1W6-RF-4c0" firstAttribute="leading" secondItem="Wqa-Vi-gbT" secondAttribute="leading" id="PC1-Q3-qbX"/>
+                            <constraint firstItem="1W6-RF-4c0" firstAttribute="height" secondItem="Wqa-Vi-gbT" secondAttribute="height" multiplier="2:3" id="RsM-8M-QnZ"/>
+                            <constraint firstItem="1W6-RF-4c0" firstAttribute="centerY" secondItem="Wqa-Vi-gbT" secondAttribute="centerY" id="bv2-sb-ARN"/>
+                            <constraint firstItem="ycY-H8-cCc" firstAttribute="top" secondItem="klh-Ll-4z6" secondAttribute="bottom" constant="8" id="ciW-ty-ZOB"/>
+                            <constraint firstItem="ycY-H8-cCc" firstAttribute="trailing" secondItem="Wqa-Vi-gbT" secondAttribute="trailingMargin" id="ek5-po-ZhS"/>
+                            <constraint firstItem="1W6-RF-4c0" firstAttribute="top" secondItem="ycY-H8-cCc" secondAttribute="bottom" constant="10" id="s0j-lq-Yr8"/>
+                            <constraint firstItem="ycY-H8-cCc" firstAttribute="leading" secondItem="Wqa-Vi-gbT" secondAttribute="leadingMargin" id="uhM-Dg-Kee"/>
+                        </constraints>
+                    </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="jgz-Es-5u4"/>
+                        <outlet property="imageView" destination="1W6-RF-4c0" id="pFH-0g-aHV"/>
+                        <outlet property="titleLabel" destination="ycY-H8-cCc" id="dvN-Sm-7Cw"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jwe-Zv-prc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Isq-SS-wLW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="4008.8000000000002" y="-63.418290854572717"/>
+        </scene>
+        <!--List Page View Controller-->
+        <scene sceneID="kZH-t8-GTV">
+            <objects>
+                <viewController id="CaP-sT-MKf" customClass="ListPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8M9-pG-FIP"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qpt-eZ-TmX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fEQ-nv-Dc0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HOD-xu-FWg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1018" y="81"/>
+        </scene>
+        <!--Tab Bar View Controller-->
+        <scene sceneID="3Co-q3-ijv">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Tke-ay-mTP" customClass="TabBarViewController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Pdz-IG-raM">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QGA-Mp-JD4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1474" y="-62"/>
         </scene>
     </scenes>
 </document>

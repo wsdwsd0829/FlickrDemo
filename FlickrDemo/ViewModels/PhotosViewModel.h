@@ -7,15 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FlickrImage.h"
+#import "Photo.h"
+#import "CacheService.h"
 
-@interface PhotosViewModel : NSObject 
-@property (nonatomic, readonly) NSArray<FlickrImage*>* images;
+@interface PhotosViewModel : NSObject
+
+@property (nonatomic, readonly) NSArray<Photo*>* photos;
 @property (nonatomic, copy) void(^updateBlock)();
 @property (nonatomic) ImageListType type;
 
+@property id<CacheServiceProtocol> cacheService;
+
+- (instancetype)initWithType: (ImageListType) type;
+
 - (void)segmentedControlChanged:(ImageListType)type;
 -(void) loadImages;
--(void)loadImageForIndexPath:(NSIndexPath*)indexPath  withHandler:(void(^)())handler;
+-(void)loadImageForIndexPath:(NSIndexPath*)indexPath withHandler:(void(^)(UIImage* image))handler;
+-(void)loadImageWithUrlString: urlString withHandler:(void(^)(UIImage* image))handler;
+
+-(Photo*) nextPhotoFor: (Photo*) photo;
+-(Photo*) previousPhotoFor:(Photo*)photo;
 @end
 

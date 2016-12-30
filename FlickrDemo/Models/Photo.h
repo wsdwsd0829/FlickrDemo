@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-@interface FlickrImage : NSObject
+@interface Photo : NSObject
 
-@property (nonatomic) UIImage* image;
+@property (nonatomic, copy, readonly) NSString* identifier;
 @property (nonatomic, copy, readonly) NSString* originalImageUrlString;
 @property (nonatomic, copy, readonly) NSString* thumbnailImageUrlString;
+@property (nonatomic, copy) NSString* title;
 
--(instancetype) initWithOriginalImageUrlString: (NSString*) ori withThumbnailImageUrlString: (NSString*) thumb;
+-(instancetype) initWithOriginalImageUrlString: (NSString*) ori withThumbnailImageUrlString: (NSString*) thumb withIdentifier:(NSString*) identifier;
 @end

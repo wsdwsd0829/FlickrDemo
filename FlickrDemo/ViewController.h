@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+//vms
+#import "PhotosViewModel.h"
 
 @interface ViewController : UIViewController
-
+@property (nonatomic) PhotosViewModel* viewModel; //the point to above that is serving
 
 @end
 

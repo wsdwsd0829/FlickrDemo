@@ -8,14 +8,14 @@
 #import "ApiClientProtocol.h"
 #import "ParserProtocol.h"
 
-#import "FlickrNetworkService.h"
+#import "NetworkService.h"
 #import "ApiClient.h"
-#import "FlickrImageParser.h"
+#import "PhotoParser.h"
 //https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.interestingness%20where%20api_key%3D%27d5c7df3552b89d13fe311eb42715b510%27&diagnostics=true&format=json
 //https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.recent%20where%20api_key%3D%27d5c7df3552b89d13fe311eb42715b510%27&diagnostics=true&format=json
 NSString* const apiKey = @"d5c7df3552b89d13fe311eb42715b510";
 
-@interface FlickrNetworkService () {
+@interface NetworkService () {
     id<ApiClientProtocol> apiClient;
     id<ParserProtocol> parser;
     NSUInteger pageNum;
@@ -23,14 +23,14 @@ NSString* const apiKey = @"d5c7df3552b89d13fe311eb42715b510";
 }
 
 @end
-@implementation FlickrNetworkService
+@implementation NetworkService
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
         apiClient = [ApiClient defaultClient];
-        parser = [[FlickrImageParser alloc] init]; //? can this be singeton, can I just use static method to parse data
+        parser = [[PhotoParser alloc] init]; //? can this be singeton, can I just use static method to parse data
         pageNum = 0;
         pageCount = 20;
     }
@@ -47,7 +47,18 @@ NSString* const apiKey = @"d5c7df3552b89d13fe311eb42715b510";
     });
 }
 
--(void) loadRecentImages: (FlickrImageListHandler)handler {
+-(void)loadPhotosWithType:(ImageListType)type withHandler:(FlickrImageListHandler)handler {
+    switch (type) {
+        case ImageListTypeRecent:
+            [self loadRecentPhotos:handler];
+            break;
+        case ImageListTypeInteresting:
+            [self loadInterestingPhotos:handler];
+            break;
+    }
+}
+
+-(void) loadRecentPhotos: (FlickrImageListHandler)handler {
    // NSLog(@"Recent Images Page Num: %lu", (unsigned long)pageNum);
     NSUInteger offset = pageCount * pageNum;
     NSString* query = [NSString stringWithFormat:@"select * from flickr.photos.recent(%ld,%ld) where api_key='%@'", (long)offset, (long)pageCount, apiKey];
@@ -56,7 +67,7 @@ NSString* const apiKey = @"d5c7df3552b89d13fe311eb42715b510";
     [self p_fetchWithParams:params withHandler:handler];
 }
 
--(void) loadInterestingImages: (FlickrImageListHandler) handler {
+-(void) loadInterestingPhotos: (FlickrImageListHandler) handler {
    // NSLog(@"Interesting Images Page Num: %lu", (unsigned long)pageNum);
     NSUInteger offset = pageCount * pageNum;
     NSString* query = [NSString stringWithFormat:@"select * from flickr.photos.interestingness(%ld,%ld) where api_key='%@'", (long)offset, (long)pageCount, apiKey];
@@ -72,7 +83,7 @@ NSString* const apiKey = @"d5c7df3552b89d13fe311eb42715b510";
         if (!error && ((NSHTTPURLResponse*)response).statusCode == 200) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 //Parse result in background thread
-                [parser parseToFlickrImagesWith:responseObject withHandler: ^(NSArray* images, NSError* error) {
+                [parser parse:responseObject withHandler: ^(NSArray* images, NSError* error) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         handler(images, error);
                     });

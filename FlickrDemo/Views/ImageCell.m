@@ -11,6 +11,6 @@
 @implementation ImageCell
 -(void)prepareForReuse{
     [super prepareForReuse];
-    self.imageView.image = nil;
+    //self.imageView.image = nil;
 }
 @end

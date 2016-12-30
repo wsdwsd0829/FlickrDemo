@@ -12,13 +12,15 @@
 
 ///Flickr service to fetch data
 
-@interface FlickrNetworkService : NSObject <FlickrNetworkServiceProtocol>
+@interface NetworkService : NSObject <FlickrNetworkServiceProtocol>
 
 //load image
 -(void)loadImageWithUrlString: (NSString*) urlString withHandler:(void(^)(NSData* data))handler;
+-(void)loadPhotosWithType: (ImageListType)type withHandler:(FlickrImageListHandler) handler;
+
 //recent
--(void) loadRecentImages: (FlickrImageListHandler) handler;
+-(void) loadRecentPhotos: (FlickrImageListHandler) handler;
 //interesting
--(void) loadInterestingImages: (FlickrImageListHandler) handler;
+-(void) loadInterestingPhotos: (FlickrImageListHandler) handler;
 
 @end

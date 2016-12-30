@@ -5,32 +5,25 @@
 //  Created by Sida Wang on 12/26/16.
 //  Copyright © 2016 Sida Wang. All rights reserved.
 //
-//services
 
-//#import "FlickrRecentImageServiceProtocol.h"
-//#import "FlickrInterestingImageServiceProtocol.h"
-
-
-#import "PhotosViewModel.h"
-#import "FlickrNetworkService.h"
+//Services
 #import "MessageManager.h"
 #import "PereferenceService.h"
+#import "NetworkService.h"
+
+//ViewModels
+#import "PhotosViewModel.h"
+
 @interface PhotosViewModel() {
     //private backing stores
-    NSMutableArray<FlickrImage*>* recentImages;
-    NSMutableArray<FlickrImage*>* interestingImages;
-    id<FlickrNetworkServiceProtocol> recentImagesService;
-    id<FlickrNetworkServiceProtocol> interestingImageService;
-    
     //for ui
-    id<FlickrNetworkServiceProtocol> imageService;
-    NSArray<FlickrImage*>* _images;
+    NSMutableArray<Photo*>* _photos;
+    id<FlickrNetworkServiceProtocol> networkService;
     
-    //callback handling
     id<MessageManagerProtocol> messageManager;
     id<PersistenceProtocol> persistenceService;
-    
 }
+
 @end
 
 @implementation PhotosViewModel
@@ -38,23 +31,30 @@
 {
     self = [super init];
     if (self) {
-        //setup services
-        recentImages = [NSMutableArray new];
-        interestingImages = [NSMutableArray new];
-        recentImagesService = [[FlickrNetworkService alloc] init];
-        interestingImageService = [[FlickrNetworkService alloc] init];
+        [[NSException exceptionWithName:@"Wrong usage" reason:@"Must provide a type of image to load using initWithType:" userInfo:nil] raise];
         
-        // actual services
-        imageService = recentImagesService;
-        _images = recentImages;
-        
-        messageManager = [[MessageManager alloc] init];
-        persistenceService = [[PereferenceService alloc] init];
-        [self setupSegmentControl];
     }
     return self;
 }
 
+- (instancetype)initWithType: (ImageListType) type
+{
+    self = [super init];
+    if (self) {
+        self.type = type;
+        _photos = [NSMutableArray new];
+        
+        //setup services
+        networkService = [[NetworkService alloc] init];
+        messageManager = [[MessageManager alloc] init];  //TODO: ? sharedMessageManager
+        persistenceService = [[PereferenceService alloc] init];
+        self.cacheService = [[CacheService alloc] init];
+        
+    }
+    return self;
+}
+
+/*
 -(void)setupSegmentControl {
     NSString* imageListPref = [persistenceService stringForKey:kUserDefaultsImagePreference];
     if(!imageListPref || [imageListPref isEqualToString:kUserDefaultsImageListRecent]) {
@@ -69,18 +69,15 @@
     [self updateBlock]; //update type in time
     [self p_initializeLoading];
 }
+ */
 
 - (void)segmentedControlChanged:(ImageListType)type {
     self.type = type;
     switch(type){
         case ImageListTypeRecent:
-            imageService = recentImagesService;
-            _images = recentImages;
             [persistenceService saveString: kUserDefaultsImageListRecent forKey:kUserDefaultsImagePreference];
             break;
         case ImageListTypeInteresting:
-            imageService = interestingImageService;
-            _images = interestingImages;
             [persistenceService saveString:kUserDefaultsImageListInteresting forKey:kUserDefaultsImagePreference];
             break;
     }
@@ -88,74 +85,67 @@
     self.updateBlock();
 }
 
+-(Photo*)previousPhotoFor:(Photo *)photo {
+    NSInteger index = [self.photos indexOfObject: photo];
+    if(index == 0) {
+        return nil;
+    }
+    return self.photos[index - 1];
+}
+
+-(Photo*)nextPhotoFor:(Photo *)photo {
+    NSInteger index = [self.photos indexOfObject: photo];
+    if(index + 10 > self.photos.count) {
+        [self loadImages];
+    }
+    if(index == self.photos.count-1) {
+        return nil;
+    }
+   return self.photos[index + 1];
+}
+
 -(void) loadImages {
-    if(imageService == recentImagesService) {
-        [imageService loadRecentImages:^(NSArray *imgs, NSError *error) {
-            if(!error) {
-                if(imgs.count > 0) {
-                    [recentImages addObjectsFromArray:imgs];
-                    self.updateBlock();
-                }
-            } else {
-                [self p_handleError: error];
+    [networkService loadPhotosWithType:self.type withHandler:^(NSArray *imgs, NSError *error) {
+        if(!error) {
+            if(imgs.count > 0) {
+                [_photos addObjectsFromArray:imgs];
+                self.updateBlock();
             }
+        } else {
+            [self p_handleError: error];
+        }
+    }];
+}
+
+-(void)loadImageForIndexPath:(NSIndexPath*)indexPath withHandler:(void(^)(UIImage* image))handler {
+    //!!! need capture imageService so it not change in block
+    NSString* urlString = self.photos[indexPath.row].originalImageUrlString;
+    UIImage* img = [self.cacheService imageForName:urlString];
+    if(!img) {
+        [networkService loadImageWithUrlString: urlString withHandler:^(NSData *data) {
+            UIImage* newImage = [UIImage imageWithData:data];
+            [self.cacheService setImage: newImage forName:urlString];
+            handler(newImage);
         }];
     } else {
-        [imageService loadInterestingImages:^(NSArray *imgs, NSError *error) {
-            if(!error) {
-                if(imgs.count > 0) {
-                    [interestingImages addObjectsFromArray:imgs];
-                    self.updateBlock();
-                }
-            } else {
-                [self p_handleError: error];
-            }
-        }];
+        handler(img);
     }
 }
-
--(void)loadImageForIndexPath:(NSIndexPath*)indexPath withHandler:(void(^)())handler {
-    //!!! need capture imageService so it not change in block
-    id<FlickrNetworkServiceProtocol> imageDownloadService = imageService;
-    NSString* urlString = self.images[indexPath.row].originalImageUrlString;
-    [imageDownloadService loadImageWithUrlString:urlString withHandler:^(NSData *data) {
-        if(imageDownloadService == recentImagesService) {
-            if(!recentImages[indexPath.row].image) {
-                recentImages[indexPath.row].image = [UIImage imageWithData:data];
-                handler();
-                //!!! do not save image twice, and do not update image multiple times
+-(void)loadImageWithUrlString: urlString withHandler:(void(^)(UIImage* image))handler  {
+    UIImage* img = [self.cacheService imageForName:urlString];
+    if(img) {
+        handler(img);
+        return;
+    }
+    [networkService loadImageWithUrlString: urlString withHandler:^(NSData *data) {
+        if(data) {
+            UIImage* newImage = [UIImage imageWithData:data];
+            if(newImage) {
+                handler(newImage);
             }
-        } else {
-            if(!interestingImages[indexPath.row].image) {
-                interestingImages[indexPath.row].image = [UIImage imageWithData:data];
-                handler();
+            if(urlString != nil){
+                [self.cacheService setImage: newImage forName:urlString];
             }
-        }
-        
-    }];
-}
-
-//to initialize loading;
--(void) p_initializeLoading{
-    [recentImagesService loadRecentImages:^(NSArray *imgs, NSError *error) {
-        if(!error) {
-            if(imgs.count > 0) {
-                [recentImages addObjectsFromArray:imgs];
-                self.updateBlock();
-            }
-        } else {
-            [self p_handleError: error];
-        }
-    }];
-    
-    [interestingImageService loadInterestingImages:^(NSArray *imgs, NSError *error) {
-        if(!error) {
-            if(imgs.count > 0) {
-                [interestingImages addObjectsFromArray:imgs];
-                self.updateBlock();
-            }
-        } else {
-            [self p_handleError: error];
         }
     }];
 }

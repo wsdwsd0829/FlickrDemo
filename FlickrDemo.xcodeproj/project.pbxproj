@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D59DCB91E15CA6300D46C4C /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D59DCB81E15CA6300D46C4C /* PageViewController.m */; };
+		0D59DCBC1E15CA7100D46C4C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D59DCBB1E15CA7100D46C4C /* DetailViewController.m */; };
+		0D59DCC01E15CA9F00D46C4C /* CacheService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D59DCBF1E15CA9F00D46C4C /* CacheService.m */; };
+		0D59DCC81E15E1F400D46C4C /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D59DCC71E15E1F400D46C4C /* TabBarViewController.m */; };
+		0D59DCCB1E15E6C100D46C4C /* Utils+DDHUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D59DCCA1E15E6C100D46C4C /* Utils+DDHUI.m */; };
 		0D8AD1771E10E432008D5CCB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1761E10E432008D5CCB /* main.m */; };
 		0D8AD17A1E10E432008D5CCB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1791E10E432008D5CCB /* AppDelegate.m */; };
 		0D8AD17D1E10E432008D5CCB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD17C1E10E432008D5CCB /* ViewController.m */; };
@@ -16,9 +21,9 @@
 		0D8AD1901E10E433008D5CCB /* FlickrDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD18F1E10E433008D5CCB /* FlickrDemoTests.m */; };
 		0D8AD19B1E10E433008D5CCB /* FlickrDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD19A1E10E433008D5CCB /* FlickrDemoUITests.m */; };
 		0D8AD1AA1E10E4A8008D5CCB /* ApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1A91E10E4A8008D5CCB /* ApiClient.m */; };
-		0D8AD1AE1E10E50C008D5CCB /* FlickrNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1AD1E10E50C008D5CCB /* FlickrNetworkService.m */; };
-		0D8AD1B51E10EECF008D5CCB /* FlickrImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1B41E10EECF008D5CCB /* FlickrImage.m */; };
-		0D8AD1B81E10F322008D5CCB /* FlickrImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1B71E10F322008D5CCB /* FlickrImageParser.m */; };
+		0D8AD1AE1E10E50C008D5CCB /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1AD1E10E50C008D5CCB /* NetworkService.m */; };
+		0D8AD1B51E10EECF008D5CCB /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1B41E10EECF008D5CCB /* Photo.m */; };
+		0D8AD1B81E10F322008D5CCB /* PhotoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1B71E10F322008D5CCB /* PhotoParser.m */; };
 		0D8AD1BF1E10F7FA008D5CCB /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1BE1E10F7FA008D5CCB /* Utils.m */; };
 		0DFC96EC1E11EC6D001EFDAD /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC96EB1E11EC6D001EFDAD /* ImageCell.m */; };
 		0DFC96FA1E121603001EFDAD /* PhotosViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC96F91E121603001EFDAD /* PhotosViewModel.m */; };
@@ -48,6 +53,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D59DCB71E15CA6300D46C4C /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageViewController.h; path = ViewControllers/PageViewController.h; sourceTree = "<group>"; };
+		0D59DCB81E15CA6300D46C4C /* PageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageViewController.m; path = ViewControllers/PageViewController.m; sourceTree = "<group>"; };
+		0D59DCBA1E15CA7100D46C4C /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		0D59DCBB1E15CA7100D46C4C /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		0D59DCBE1E15CA9F00D46C4C /* CacheService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheService.h; sourceTree = "<group>"; };
+		0D59DCBF1E15CA9F00D46C4C /* CacheService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheService.m; sourceTree = "<group>"; };
+		0D59DCC21E15D27A00D46C4C /* CacheServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CacheServiceProtocol.h; path = Services/CacheServiceProtocol.h; sourceTree = "<group>"; };
+		0D59DCC61E15E1F400D46C4C /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabBarViewController.h; path = ViewControllers/TabBarViewController.h; sourceTree = "<group>"; };
+		0D59DCC71E15E1F400D46C4C /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabBarViewController.m; path = ViewControllers/TabBarViewController.m; sourceTree = "<group>"; };
+		0D59DCC91E15E6C100D46C4C /* Utils+DDHUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Utils+DDHUI.h"; sourceTree = "<group>"; };
+		0D59DCCA1E15E6C100D46C4C /* Utils+DDHUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Utils+DDHUI.m"; sourceTree = "<group>"; };
 		0D8AD1721E10E432008D5CCB /* FlickrDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8AD1761E10E432008D5CCB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D8AD1781E10E432008D5CCB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -66,12 +82,12 @@
 		0D8AD19C1E10E433008D5CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D8AD1A81E10E4A8008D5CCB /* ApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApiClient.h; path = Managers/Network/ApiClient.h; sourceTree = "<group>"; };
 		0D8AD1A91E10E4A8008D5CCB /* ApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApiClient.m; path = Managers/Network/ApiClient.m; sourceTree = "<group>"; };
-		0D8AD1AC1E10E50C008D5CCB /* FlickrNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrNetworkService.h; path = Managers/Network/FlickrNetworkService.h; sourceTree = "<group>"; };
-		0D8AD1AD1E10E50C008D5CCB /* FlickrNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrNetworkService.m; path = Managers/Network/FlickrNetworkService.m; sourceTree = "<group>"; };
-		0D8AD1B31E10EECF008D5CCB /* FlickrImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrImage.h; path = Models/FlickrImage.h; sourceTree = "<group>"; };
-		0D8AD1B41E10EECF008D5CCB /* FlickrImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrImage.m; path = Models/FlickrImage.m; sourceTree = "<group>"; };
-		0D8AD1B61E10F322008D5CCB /* FlickrImageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrImageParser.h; path = Managers/Network/FlickrImageParser.h; sourceTree = "<group>"; };
-		0D8AD1B71E10F322008D5CCB /* FlickrImageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrImageParser.m; path = Managers/Network/FlickrImageParser.m; sourceTree = "<group>"; };
+		0D8AD1AC1E10E50C008D5CCB /* NetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkService.h; path = Managers/Network/NetworkService.h; sourceTree = "<group>"; };
+		0D8AD1AD1E10E50C008D5CCB /* NetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkService.m; path = Managers/Network/NetworkService.m; sourceTree = "<group>"; };
+		0D8AD1B31E10EECF008D5CCB /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = Models/Photo.h; sourceTree = "<group>"; };
+		0D8AD1B41E10EECF008D5CCB /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = Models/Photo.m; sourceTree = "<group>"; };
+		0D8AD1B61E10F322008D5CCB /* PhotoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoParser.h; path = Managers/Network/PhotoParser.h; sourceTree = "<group>"; };
+		0D8AD1B71E10F322008D5CCB /* PhotoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoParser.m; path = Managers/Network/PhotoParser.m; sourceTree = "<group>"; };
 		0D8AD1BD1E10F7FA008D5CCB /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Helpers/Utils.h; sourceTree = "<group>"; };
 		0D8AD1BE1E10F7FA008D5CCB /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = Helpers/Utils.m; sourceTree = "<group>"; };
 		0DFC96EA1E11EC6D001EFDAD /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCell.h; path = Views/ImageCell.h; sourceTree = "<group>"; };
@@ -127,6 +143,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D59DCB61E15CA4500D46C4C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0D59DCB71E15CA6300D46C4C /* PageViewController.h */,
+				0D59DCB81E15CA6300D46C4C /* PageViewController.m */,
+				0D59DCBA1E15CA7100D46C4C /* DetailViewController.h */,
+				0D59DCBB1E15CA7100D46C4C /* DetailViewController.m */,
+				0D59DCC61E15E1F400D46C4C /* TabBarViewController.h */,
+				0D59DCC71E15E1F400D46C4C /* TabBarViewController.m */,
+				0D8AD17B1E10E432008D5CCB /* ViewController.h */,
+				0D8AD17C1E10E432008D5CCB /* ViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0D59DCBD1E15CA9800D46C4C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0D59DCC11E15D15600D46C4C /* CacheService */,
+				0DFC96FB1E122131001EFDAD /* MessageService */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		0D59DCC11E15D15600D46C4C /* CacheService */ = {
+			isa = PBXGroup;
+			children = (
+				0D59DCBE1E15CA9F00D46C4C /* CacheService.h */,
+				0D59DCBF1E15CA9F00D46C4C /* CacheService.m */,
+				0D59DCC21E15D27A00D46C4C /* CacheServiceProtocol.h */,
+			);
+			name = CacheService;
+			sourceTree = "<group>";
+		};
 		0D8AD1691E10E432008D5CCB = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +202,8 @@
 		0D8AD1741E10E432008D5CCB /* FlickrDemo */ = {
 			isa = PBXGroup;
 			children = (
+				0D59DCBD1E15CA9800D46C4C /* Services */,
+				0D59DCB61E15CA4500D46C4C /* ViewControllers */,
 				0DFC96F71E1215AC001EFDAD /* ViewModels */,
 				0DFC96E91E11EC49001EFDAD /* ImageCell */,
 				0D8AD1B91E10F7D3008D5CCB /* Helpers */,
@@ -159,8 +211,6 @@
 				0D8AD1AB1E10E4AF008D5CCB /* Managers */,
 				0D8AD1781E10E432008D5CCB /* AppDelegate.h */,
 				0D8AD1791E10E432008D5CCB /* AppDelegate.m */,
-				0D8AD17B1E10E432008D5CCB /* ViewController.h */,
-				0D8AD17C1E10E432008D5CCB /* ViewController.m */,
 				0D8AD17E1E10E432008D5CCB /* Main.storyboard */,
 				0D8AD1811E10E432008D5CCB /* Assets.xcassets */,
 				0D8AD1831E10E433008D5CCB /* LaunchScreen.storyboard */,
@@ -201,7 +251,6 @@
 			isa = PBXGroup;
 			children = (
 				0DFC970C1E122B6B001EFDAD /* Persistence */,
-				0DFC96FB1E122131001EFDAD /* MessageManager */,
 				0D8AD1AF1E10E510008D5CCB /* Network */,
 			);
 			name = Managers;
@@ -213,10 +262,10 @@
 				0D8AD1B01E10E535008D5CCB /* Protocol */,
 				0D8AD1A81E10E4A8008D5CCB /* ApiClient.h */,
 				0D8AD1A91E10E4A8008D5CCB /* ApiClient.m */,
-				0D8AD1AC1E10E50C008D5CCB /* FlickrNetworkService.h */,
-				0D8AD1AD1E10E50C008D5CCB /* FlickrNetworkService.m */,
-				0D8AD1B61E10F322008D5CCB /* FlickrImageParser.h */,
-				0D8AD1B71E10F322008D5CCB /* FlickrImageParser.m */,
+				0D8AD1AC1E10E50C008D5CCB /* NetworkService.h */,
+				0D8AD1AD1E10E50C008D5CCB /* NetworkService.m */,
+				0D8AD1B61E10F322008D5CCB /* PhotoParser.h */,
+				0D8AD1B71E10F322008D5CCB /* PhotoParser.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -234,8 +283,8 @@
 		0D8AD1B21E10EEB2008D5CCB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0D8AD1B31E10EECF008D5CCB /* FlickrImage.h */,
-				0D8AD1B41E10EECF008D5CCB /* FlickrImage.m */,
+				0D8AD1B31E10EECF008D5CCB /* Photo.h */,
+				0D8AD1B41E10EECF008D5CCB /* Photo.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -243,6 +292,8 @@
 		0D8AD1B91E10F7D3008D5CCB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0D59DCC91E15E6C100D46C4C /* Utils+DDHUI.h */,
+				0D59DCCA1E15E6C100D46C4C /* Utils+DDHUI.m */,
 				0DFC96FF1E1221CA001EFDAD /* UIViewController+Navigations.h */,
 				0DFC97001E1221CA001EFDAD /* UIViewController+Navigations.m */,
 				0D8AD1BD1E10F7FA008D5CCB /* Utils.h */,
@@ -271,14 +322,14 @@
 			name = ViewModels;
 			sourceTree = "<group>";
 		};
-		0DFC96FB1E122131001EFDAD /* MessageManager */ = {
+		0DFC96FB1E122131001EFDAD /* MessageService */ = {
 			isa = PBXGroup;
 			children = (
 				0DFC96FC1E122171001EFDAD /* MessageManager.h */,
 				0DFC96FD1E122171001EFDAD /* MessageManager.m */,
 				0DFC970A1E1224AE001EFDAD /* MessageManagerProtocol.h */,
 			);
-			name = MessageManager;
+			name = MessageService;
 			sourceTree = "<group>";
 		};
 		0DFC970C1E122B6B001EFDAD /* Persistence */ = {
@@ -546,19 +597,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D8AD1B51E10EECF008D5CCB /* FlickrImage.m in Sources */,
+				0D8AD1B51E10EECF008D5CCB /* Photo.m in Sources */,
 				0D8AD17D1E10E432008D5CCB /* ViewController.m in Sources */,
+				0D59DCC01E15CA9F00D46C4C /* CacheService.m in Sources */,
 				0DFC97091E122439001EFDAD /* DemoConstants.m in Sources */,
+				0D59DCBC1E15CA7100D46C4C /* DetailViewController.m in Sources */,
 				0D8AD17A1E10E432008D5CCB /* AppDelegate.m in Sources */,
 				0D8AD1BF1E10F7FA008D5CCB /* Utils.m in Sources */,
 				0DFC97011E1221CA001EFDAD /* UIViewController+Navigations.m in Sources */,
 				0D8AD1771E10E432008D5CCB /* main.m in Sources */,
-				0D8AD1B81E10F322008D5CCB /* FlickrImageParser.m in Sources */,
+				0D8AD1B81E10F322008D5CCB /* PhotoParser.m in Sources */,
+				0D59DCB91E15CA6300D46C4C /* PageViewController.m in Sources */,
+				0D59DCC81E15E1F400D46C4C /* TabBarViewController.m in Sources */,
 				0D8AD1AA1E10E4A8008D5CCB /* ApiClient.m in Sources */,
 				0DFC96EC1E11EC6D001EFDAD /* ImageCell.m in Sources */,
-				0D8AD1AE1E10E50C008D5CCB /* FlickrNetworkService.m in Sources */,
+				0D8AD1AE1E10E50C008D5CCB /* NetworkService.m in Sources */,
 				0DFC96FE1E122171001EFDAD /* MessageManager.m in Sources */,
 				0DFC970F1E122BB0001EFDAD /* PereferenceService.m in Sources */,
+				0D59DCCB1E15E6C100D46C4C /* Utils+DDHUI.m in Sources */,
 				0DFC96FA1E121603001EFDAD /* PhotosViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

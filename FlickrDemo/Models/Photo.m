@@ -6,15 +6,16 @@
 //  Copyright © 2016 Sida Wang. All rights reserved.
 //
 
-#import "FlickrImage.h"
+#import "Photo.h"
 
-@implementation FlickrImage
+@implementation Photo
 
--(instancetype) initWithOriginalImageUrlString: (NSString*) ori withThumbnailImageUrlString: (NSString*) thumb {
+-(instancetype) initWithOriginalImageUrlString: (NSString*) ori withThumbnailImageUrlString: (NSString*) thumb withIdentifier:(NSString*) identifier {
     self = [super init];
     if (self) {
         _originalImageUrlString = ori;
         _thumbnailImageUrlString = thumb;
+        _identifier = identifier;
     }
     return self;
 }
