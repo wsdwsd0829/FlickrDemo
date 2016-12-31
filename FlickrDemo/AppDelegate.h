@@ -23,6 +23,8 @@
     9. Remember User selection (persist layer example)
     10. replace/mock SDWebImage (using mem cache, can delete on post Notification for each FlickrImageObject)
     11. rotation handling
+    12. gesture/embed controller
+    13. custom view controller animation transition
 
  */
 /*

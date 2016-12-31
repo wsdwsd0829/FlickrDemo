@@ -26,6 +26,9 @@
 		0D8AD1B51E10EECF008D5CCB /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1B41E10EECF008D5CCB /* Photo.m */; };
 		0D8AD1B81E10F322008D5CCB /* PhotoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1B71E10F322008D5CCB /* PhotoParser.m */; };
 		0D8AD1BF1E10F7FA008D5CCB /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AD1BE1E10F7FA008D5CCB /* Utils.m */; };
+		0DEA38761E1768A900191B37 /* HorizontalAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA38751E1768A900191B37 /* HorizontalAnimator.m */; };
+		0DEA38791E1774C000191B37 /* HostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA38781E1774C000191B37 /* HostViewController.m */; };
+		0DEA387E1E182E6F00191B37 /* OpenPageAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA387D1E182E6F00191B37 /* OpenPageAnimator.m */; };
 		0DFC96EC1E11EC6D001EFDAD /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC96EB1E11EC6D001EFDAD /* ImageCell.m */; };
 		0DFC96FA1E121603001EFDAD /* PhotosViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC96F91E121603001EFDAD /* PhotosViewModel.m */; };
 		0DFC96FE1E122171001EFDAD /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC96FD1E122171001EFDAD /* MessageManager.m */; };
@@ -94,6 +97,13 @@
 		0D8AD1B71E10F322008D5CCB /* PhotoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoParser.m; path = Services/PhotoParser.m; sourceTree = "<group>"; };
 		0D8AD1BD1E10F7FA008D5CCB /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Helpers/Utils.h; sourceTree = "<group>"; };
 		0D8AD1BE1E10F7FA008D5CCB /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = Helpers/Utils.m; sourceTree = "<group>"; };
+		0DEA38741E1768A900191B37 /* HorizontalAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HorizontalAnimator.h; path = Views/Animators/HorizontalAnimator.h; sourceTree = "<group>"; };
+		0DEA38751E1768A900191B37 /* HorizontalAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HorizontalAnimator.m; path = Views/Animators/HorizontalAnimator.m; sourceTree = "<group>"; };
+		0DEA38771E1774C000191B37 /* HostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HostViewController.h; path = ViewControllers/HostViewController.h; sourceTree = "<group>"; };
+		0DEA38781E1774C000191B37 /* HostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HostViewController.m; path = ViewControllers/HostViewController.m; sourceTree = "<group>"; };
+		0DEA387C1E182E6F00191B37 /* OpenPageAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenPageAnimator.h; path = Views/Animators/OpenPageAnimator.h; sourceTree = "<group>"; };
+		0DEA387D1E182E6F00191B37 /* OpenPageAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenPageAnimator.m; path = Views/Animators/OpenPageAnimator.m; sourceTree = "<group>"; };
+		0DEA387F1E1838AF00191B37 /* OpenSourceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenSourceProtocol.h; path = Views/Animators/OpenSourceProtocol.h; sourceTree = "<group>"; };
 		0DFC96EA1E11EC6D001EFDAD /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCell.h; path = Views/ImageCell.h; sourceTree = "<group>"; };
 		0DFC96EB1E11EC6D001EFDAD /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageCell.m; path = Views/ImageCell.m; sourceTree = "<group>"; };
 		0DFC96EF1E11FE02001EFDAD /* NetworkServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkServiceProtocol.h; path = Services/NetworkServiceProtocol.h; sourceTree = "<group>"; };
@@ -150,14 +160,8 @@
 		0D59DCB61E15CA4500D46C4C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				0D59DCB71E15CA6300D46C4C /* PageViewController.h */,
-				0D59DCB81E15CA6300D46C4C /* PageViewController.m */,
-				0D59DCBA1E15CA7100D46C4C /* DetailViewController.h */,
-				0D59DCBB1E15CA7100D46C4C /* DetailViewController.m */,
-				0D59DCC61E15E1F400D46C4C /* TabBarViewController.h */,
-				0D59DCC71E15E1F400D46C4C /* TabBarViewController.m */,
-				0D8AD17B1E10E432008D5CCB /* ViewController.h */,
-				0D8AD17C1E10E432008D5CCB /* ViewController.m */,
+				0DEA387B1E182B2900191B37 /* detail */,
+				0DEA387A1E182B1D00191B37 /* listselect */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -231,13 +235,13 @@
 			isa = PBXGroup;
 			children = (
 				0D7DBC891E1604F800FC0592 /* Frameworks */,
-				0D59DCBD1E15CA9800D46C4C /* Services */,
-				0D59DCB61E15CA4500D46C4C /* ViewControllers */,
-				0DFC96F71E1215AC001EFDAD /* ViewModels */,
-				0DFC96E91E11EC49001EFDAD /* ImageCell */,
-				0D8AD1B91E10F7D3008D5CCB /* Helpers */,
-				0D8AD1B21E10EEB2008D5CCB /* Models */,
 				0D8AD1AB1E10E4AF008D5CCB /* Managers */,
+				0D59DCBD1E15CA9800D46C4C /* Services */,
+				0D8AD1B21E10EEB2008D5CCB /* Models */,
+				0D59DCB61E15CA4500D46C4C /* ViewControllers */,
+				0DEA38721E1767A600191B37 /* Views */,
+				0DFC96F71E1215AC001EFDAD /* ViewModels */,
+				0D8AD1B91E10F7D3008D5CCB /* Helpers */,
 				0D8AD1781E10E432008D5CCB /* AppDelegate.h */,
 				0D8AD1791E10E432008D5CCB /* AppDelegate.m */,
 				0D8AD17E1E10E432008D5CCB /* Main.storyboard */,
@@ -325,6 +329,51 @@
 				0DFC97081E122439001EFDAD /* DemoConstants.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		0DEA38721E1767A600191B37 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DEA38731E1767DD00191B37 /* Animators */,
+				0DFC96E91E11EC49001EFDAD /* ImageCell */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		0DEA38731E1767DD00191B37 /* Animators */ = {
+			isa = PBXGroup;
+			children = (
+				0DEA38741E1768A900191B37 /* HorizontalAnimator.h */,
+				0DEA38751E1768A900191B37 /* HorizontalAnimator.m */,
+				0DEA387C1E182E6F00191B37 /* OpenPageAnimator.h */,
+				0DEA387D1E182E6F00191B37 /* OpenPageAnimator.m */,
+				0DEA387F1E1838AF00191B37 /* OpenSourceProtocol.h */,
+			);
+			name = Animators;
+			sourceTree = "<group>";
+		};
+		0DEA387A1E182B1D00191B37 /* listselect */ = {
+			isa = PBXGroup;
+			children = (
+				0D59DCC61E15E1F400D46C4C /* TabBarViewController.h */,
+				0D59DCC71E15E1F400D46C4C /* TabBarViewController.m */,
+				0D8AD17B1E10E432008D5CCB /* ViewController.h */,
+				0D8AD17C1E10E432008D5CCB /* ViewController.m */,
+				0DEA38771E1774C000191B37 /* HostViewController.h */,
+				0DEA38781E1774C000191B37 /* HostViewController.m */,
+			);
+			name = listselect;
+			sourceTree = "<group>";
+		};
+		0DEA387B1E182B2900191B37 /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				0D59DCB71E15CA6300D46C4C /* PageViewController.h */,
+				0D59DCB81E15CA6300D46C4C /* PageViewController.m */,
+				0D59DCBA1E15CA7100D46C4C /* DetailViewController.h */,
+				0D59DCBB1E15CA7100D46C4C /* DetailViewController.m */,
+			);
+			name = detail;
 			sourceTree = "<group>";
 		};
 		0DFC96E91E11EC49001EFDAD /* ImageCell */ = {
@@ -623,6 +672,7 @@
 				0D8AD1B51E10EECF008D5CCB /* Photo.m in Sources */,
 				0D8AD17D1E10E432008D5CCB /* ViewController.m in Sources */,
 				0D59DCC01E15CA9F00D46C4C /* CacheService.m in Sources */,
+				0DEA387E1E182E6F00191B37 /* OpenPageAnimator.m in Sources */,
 				0DFC97091E122439001EFDAD /* DemoConstants.m in Sources */,
 				0D59DCBC1E15CA7100D46C4C /* DetailViewController.m in Sources */,
 				0D8AD17A1E10E432008D5CCB /* AppDelegate.m in Sources */,
@@ -632,11 +682,13 @@
 				0D8AD1B81E10F322008D5CCB /* PhotoParser.m in Sources */,
 				0D59DCB91E15CA6300D46C4C /* PageViewController.m in Sources */,
 				0D59DCC81E15E1F400D46C4C /* TabBarViewController.m in Sources */,
+				0DEA38761E1768A900191B37 /* HorizontalAnimator.m in Sources */,
 				0D8AD1AA1E10E4A8008D5CCB /* ApiClient.m in Sources */,
 				0DFC96EC1E11EC6D001EFDAD /* ImageCell.m in Sources */,
 				0D7DBC8C1E16050B00FC0592 /* Reachability.m in Sources */,
 				0D8AD1AE1E10E50C008D5CCB /* NetworkService.m in Sources */,
 				0DFC96FE1E122171001EFDAD /* MessageManager.m in Sources */,
+				0DEA38791E1774C000191B37 /* HostViewController.m in Sources */,
 				0DFC970F1E122BB0001EFDAD /* PereferenceService.m in Sources */,
 				0D59DCCB1E15E6C100D46C4C /* Utils+DDHUI.m in Sources */,
 				0DFC96FA1E121603001EFDAD /* PhotosViewModel.m in Sources */,

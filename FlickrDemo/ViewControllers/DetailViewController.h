@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Photo.h"
 #import "PhotosViewModel.h"
-@interface DetailViewController: UIViewController
+@interface DetailViewController: UIViewController 
 
 @property (nonatomic, weak) IBOutlet UILabel* titleLabel;
 @property (nonatomic, weak) IBOutlet UIImageView* imageView;

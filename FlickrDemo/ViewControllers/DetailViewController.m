@@ -19,6 +19,11 @@
     [self updateUI];
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear: animated];
+    self.navigationController.navigationBar.topItem.title = @"Gallery";
+}
+
 -(void) updateUI {
     self.titleLabel.text = self.photo.title;
     if(!self.imageView.image){
@@ -32,15 +37,5 @@
     [super viewDidLayoutSubviews];
     //NSLog(@"%f", [self.topLayoutGuide length]);
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

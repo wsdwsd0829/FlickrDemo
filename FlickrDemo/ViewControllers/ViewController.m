@@ -7,24 +7,22 @@
 //
 
 #import "ViewController.h"
-#import "DetailViewController.h"
 #import "PageViewController.h"
+#import "OpenPageAnimator.h"
 //models
 #import "Photo.h"
 //views
 #import "ImageCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "Utils+DDHUI.h"
-
+#import "UIViewController+Navigations.h"
 
 NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerService, otherwise no new page will loaded
 
-@interface ViewController ()<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIPageViewControllerDataSource> {
+@interface ViewController ()<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate> {
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
-
 @end
 
 @implementation ViewController
@@ -36,7 +34,9 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
     self.collectionView.delegate = self;
     UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc] init];
     self.collectionView.collectionViewLayout = flowLayout;
-
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    self.navigationController.delegate = self;
     //setup Notifications
     [self setupNotifications];
     //setup dependencies: ViewModel
@@ -45,6 +45,7 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
     [self.viewModel loadImages];
 
 }
+
 -(void)setupNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkChanged:) name:kNetworkOfflineToOnline object:nil];
 }
@@ -59,30 +60,9 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
     self.viewModel.updateBlock = updateBlock;
 }
 
-//MARK: user actions & notifications
-- (IBAction)segmentedControlChanged:(UISegmentedControl *)sender {
-    if(self.viewModel.type == ImageListTypeRecent && sender.selectedSegmentIndex == ImageListTypeInteresting) {
-        self.tabBarController.selectedIndex = ImageListTypeInteresting;
-        [self.viewModel segmentedControlChangedTo:ImageListTypeInteresting];
-    }
-    if(self.viewModel.type == ImageListTypeInteresting && sender.selectedSegmentIndex == ImageListTypeRecent) {
-        self.tabBarController.selectedIndex = ImageListTypeRecent;
-        [self.viewModel segmentedControlChangedTo:ImageListTypeRecent];
-    }
-}
-
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self setupSegmentControlIndex];
-}
-
--(void)setupSegmentControlIndex {
-    if(self.viewModel.type == ImageListTypeRecent) {
-        self.segmentedControl.selectedSegmentIndex = (int)ImageListTypeRecent;
-    }
-    if(self.viewModel.type == ImageListTypeInteresting) {
-        self.segmentedControl.selectedSegmentIndex = (int)ImageListTypeInteresting;
-    }
+   // [self setupSegmentControlIndex];
 }
 
 //reload to trigger network reloading from Offline to onLine
@@ -125,7 +105,6 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
             }
         }];
     }
-    
     //NSLog(@"indexPath: %@", indexPath);
     if(indexPath.row + PreloadingOffset == self.viewModel.photos.count) {
         [self.viewModel loadImages];
@@ -148,44 +127,40 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
     return 10;
 }
 
+//MARK: Transition
+
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    DetailViewController* dvc = [self createDetailPage];
-    dvc.photo = self.viewModel.photos[indexPath.item];
+    
     PageViewController* pvc = [[PageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    [pvc setViewControllers:@[dvc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-    pvc.dataSource = self;
-    pvc.edgesForExtendedLayout = UIRectEdgeBottom;
+    [self setupPageViewController:pvc withIndexPath: indexPath];
     [self.navigationController pushViewController:pvc animated:YES];
 }
 
-//can put in a Category
-//Mark: Page Navigation
-- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-    if(![viewController isKindOfClass: [DetailViewController class]]) {
-        return nil;
-    }
-    DetailViewController* oldVC = (DetailViewController*)viewController;
-    DetailViewController* dvc = [self createDetailPage];
-    dvc.photo = [self.viewModel previousPhotoFor:oldVC.photo];
-    return dvc;
+-(void)setupPageViewController: (PageViewController*) pvc withIndexPath:(NSIndexPath*)indexPath{
+    UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+    pvc.dataSource = pvc;  //pvc's navigation controller not set yet!
+    pvc.viewModel = self.viewModel;
+    pvc.edgesForExtendedLayout = UIRectEdgeBottom;
+    DetailViewController* dvc = [pvc createDetailPage];
+    dvc.photo = self.viewModel.photos[indexPath.item];
+    [pvc setViewControllers:@[dvc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    UIView* v = [[UIApplication sharedApplication] keyWindow].rootViewController.view;
+    pvc.fromFrame = [cell convertRect:cell.frame toView:v];
 }
 
-- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    if(![viewController isKindOfClass: [DetailViewController class]]) {
-        return nil;
+-(id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
+    //fromVC: HostViewController, toVC: PageViewController
+    //all properties of self is deallocated.
+    if([toVC isKindOfClass: [PageViewController class]]) {
+        OpenPageAnimator* opa = [[OpenPageAnimator alloc] init];
+        opa.delegate = ((PageViewController*)toVC);//((PageViewController*)toVC).fromCellFrame;
+        //???
+        //po ((ViewController*)(((HostViewController*)fromVC)->tabBarViewController.viewControllers[0])).viewModel (has value)
+        //po self.viewModel  (is nil)
+        opa.presenting = YES;
+        return opa;
     }
-    DetailViewController* oldVC = (DetailViewController*)viewController;
-    DetailViewController* dvc = [self createDetailPage];
-    dvc.photo = [self.viewModel nextPhotoFor: oldVC.photo];
-    return dvc;
-}
-
--(DetailViewController*) createDetailPage{
-    DetailViewController* dvc = [Utils viewControllerWithIdentifier:@"DetailViewController" fromStoryBoardNamed: @"Main"];
-    //create create New viewModel for Detail, here for simplicity;
-    dvc.viewModel = self.viewModel;
-    
-    return dvc;
+    return nil;
 }
 
 //MARK: rotation
@@ -207,5 +182,7 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
        // [self.collectionView reloadData];
     }];
 }
+
+
 
 @end

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PageViewController : UIPageViewController
+#import "OpenSourceProtocol.h"
+#import "PhotosViewModel.h"
+#import "Utils+DDHUI.h"
+#import "DetailViewController.h"
 
+@interface PageViewController : UIPageViewController <OpenSourceProtocol,UIPageViewControllerDataSource>
+@property (nonatomic) CGRect fromFrame;
+@property (nonatomic) PhotosViewModel* viewModel; //the point to above that is serving
+-(DetailViewController*) createDetailPage;
 @end

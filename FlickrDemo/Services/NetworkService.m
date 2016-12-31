@@ -13,7 +13,7 @@
 #import "PhotoParser.h"
 //https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.interestingness%20where%20api_key%3D%27d5c7df3552b89d13fe311eb42715b510%27&diagnostics=true&format=json
 //https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.recent%20where%20api_key%3D%27d5c7df3552b89d13fe311eb42715b510%27&diagnostics=true&format=json
-NSString* const apiKey = @"d5c7df3552b89d13fe311eb42715b510";
+NSString* const apiKey = @"d33ef16f7b9d67141aa1f5b164b59101";//@"d5c7df3552b89d13fe311eb42715b510";
 
 @interface NetworkService () {
     id<ApiClientProtocol> apiClient;

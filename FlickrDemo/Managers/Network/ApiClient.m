@@ -27,6 +27,7 @@ typedef NS_ENUM(NSUInteger, RequestMethod) {
 }
 
 -(void) fetchWithUrlString:(NSString*) urlString withHandler:(HttpResponseHandler) handler {
+    if(urlString == nil) return;
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     NSMutableURLRequest* request = [self p_requestSerializerWithMethod: GET host: urlString params: nil error: nil];
