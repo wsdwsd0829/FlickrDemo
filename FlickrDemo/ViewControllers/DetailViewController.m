@@ -16,9 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self updateUI];
 }
-
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear: animated];
+    self.navigationController.navigationBar.topItem.title = @"Gallery";
+}
 -(void) updateUI {
     self.titleLabel.text = self.photo.title;
     if(!self.imageView.image){

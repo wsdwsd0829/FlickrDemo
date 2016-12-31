@@ -21,7 +21,6 @@
     id<NetworkServiceProtocol> networkService;
     
     id<MessageManagerProtocol> messageManager;
-    id<PereferenceServiceProtocol> pereferenceService;
 }
 
 @end
@@ -47,16 +46,10 @@
         //setup services
         networkService = [[NetworkService alloc] init];
         messageManager = [[MessageManager alloc] init];  //TODO: ? sharedMessageManager
-        pereferenceService = [[PereferenceService alloc] init];
         self.cacheService = [[CacheService alloc] init];
         
     }
     return self;
-}
-
-
-- (void)segmentedControlChangedTo:(ImageListType)type {
-    [pereferenceService selectedImageListType:type];
 }
 
 -(Photo*)previousPhotoFor:(Photo *)photo {
@@ -86,6 +79,7 @@
                 self.updateBlock();
             }
         } else {
+            NSLog(@"loadImages error: %@", error);
             [self p_handleError: error];
         }
     }];
@@ -97,7 +91,7 @@
     if(!img) {
         [networkService loadImageWithUrlString: urlString withHandler:^(NSData *data, NSError* error) {
             if(error) {
-                //will often report host not exist
+                NSLog(@"loadImageForIndexPath error: %@", error);
                 [self p_handleError:error];
                 return;
             }
@@ -118,6 +112,7 @@
     }
     [networkService loadImageWithUrlString: urlString withHandler:^(NSData *data, NSError* error) {
         if(error) {
+            NSLog(@"loadImageWithUrlString error: %@", error);
             [self p_handleError:error];
             return;
         }

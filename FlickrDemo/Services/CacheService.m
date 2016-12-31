@@ -13,8 +13,8 @@
  */
 
 @interface CacheService() {
-    //NSMutableDictionary* productImageCache;
-    NSCache* productImageCache;
+    NSMutableDictionary* productImageCache;
+    //NSCache* productImageCache;
 }
 @end
 @implementation CacheService
@@ -29,7 +29,7 @@
 {
     self = [super init];
     if (self) {
-        productImageCache = [[NSCache alloc] init]; // [[NSMutableDictionary alloc] init];//
+        productImageCache = [[NSMutableDictionary alloc] init]; // [[NSCache alloc] init]; // //
     }
     return self;
 }

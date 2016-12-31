@@ -23,7 +23,6 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @end
 
@@ -36,7 +35,8 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
     self.collectionView.delegate = self;
     UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc] init];
     self.collectionView.collectionViewLayout = flowLayout;
-
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     //setup Notifications
     [self setupNotifications];
     //setup dependencies: ViewModel
@@ -45,6 +45,7 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
     [self.viewModel loadImages];
 
 }
+
 -(void)setupNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkChanged:) name:kNetworkOfflineToOnline object:nil];
 }
@@ -60,30 +61,30 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
 }
 
 //MARK: user actions & notifications
-- (IBAction)segmentedControlChanged:(UISegmentedControl *)sender {
-    if(self.viewModel.type == ImageListTypeRecent && sender.selectedSegmentIndex == ImageListTypeInteresting) {
-        self.tabBarController.selectedIndex = ImageListTypeInteresting;
-        [self.viewModel segmentedControlChangedTo:ImageListTypeInteresting];
-    }
-    if(self.viewModel.type == ImageListTypeInteresting && sender.selectedSegmentIndex == ImageListTypeRecent) {
-        self.tabBarController.selectedIndex = ImageListTypeRecent;
-        [self.viewModel segmentedControlChangedTo:ImageListTypeRecent];
-    }
-}
+//- (IBAction)segmentedControlChanged:(UISegmentedControl *)sender {
+//    if(self.viewModel.type == ImageListTypeRecent && sender.selectedSegmentIndex == ImageListTypeInteresting) {
+//        self.tabBarController.selectedIndex = ImageListTypeInteresting;
+//        [self.viewModel segmentedControlChangedTo:ImageListTypeInteresting];
+//    }
+//    if(self.viewModel.type == ImageListTypeInteresting && sender.selectedSegmentIndex == ImageListTypeRecent) {
+//        self.tabBarController.selectedIndex = ImageListTypeRecent;
+//        [self.viewModel segmentedControlChangedTo:ImageListTypeRecent];
+//    }
+//}
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self setupSegmentControlIndex];
+   // [self setupSegmentControlIndex];
 }
 
--(void)setupSegmentControlIndex {
-    if(self.viewModel.type == ImageListTypeRecent) {
-        self.segmentedControl.selectedSegmentIndex = (int)ImageListTypeRecent;
-    }
-    if(self.viewModel.type == ImageListTypeInteresting) {
-        self.segmentedControl.selectedSegmentIndex = (int)ImageListTypeInteresting;
-    }
-}
+//-(void)setupSegmentControlIndex {
+//    if(self.viewModel.type == ImageListTypeRecent) {
+//        self.segmentedControl.selectedSegmentIndex = (int)ImageListTypeRecent;
+//    }
+//    if(self.viewModel.type == ImageListTypeInteresting) {
+//        self.segmentedControl.selectedSegmentIndex = (int)ImageListTypeInteresting;
+//    }
+//}
 
 //reload to trigger network reloading from Offline to onLine
 -(void)networkChanged:(NSNotification*) notification {
@@ -182,6 +183,8 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
 
 -(DetailViewController*) createDetailPage{
     DetailViewController* dvc = [Utils viewControllerWithIdentifier:@"DetailViewController" fromStoryBoardNamed: @"Main"];
+    dvc.navigationItem.title=@"Gallery";
+    dvc.navigationController.navigationBar.topItem.title = @"gallery";
     //create create New viewModel for Detail, here for simplicity;
     dvc.viewModel = self.viewModel;
     
