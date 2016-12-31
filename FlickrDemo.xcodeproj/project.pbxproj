@@ -162,6 +162,16 @@
 			children = (
 				0DEA387B1E182B2900191B37 /* detail */,
 				0DEA387A1E182B1D00191B37 /* listselect */,
+				0D59DCB71E15CA6300D46C4C /* PageViewController.h */,
+				0D59DCB81E15CA6300D46C4C /* PageViewController.m */,
+				0D59DCBA1E15CA7100D46C4C /* DetailViewController.h */,
+				0D59DCBB1E15CA7100D46C4C /* DetailViewController.m */,
+				0D59DCC61E15E1F400D46C4C /* TabBarViewController.h */,
+				0D59DCC71E15E1F400D46C4C /* TabBarViewController.m */,
+				0D8AD17B1E10E432008D5CCB /* ViewController.h */,
+				0D8AD17C1E10E432008D5CCB /* ViewController.m */,
+				0DEA38771E1774C000191B37 /* HostViewController.h */,
+				0DEA38781E1774C000191B37 /* HostViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
