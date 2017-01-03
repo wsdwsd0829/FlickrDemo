@@ -40,7 +40,7 @@
     return dvc.photo ? dvc: nil;
 }
 
--(DetailViewController*) createDetailPage{
+-(DetailViewController*) createDetailPage {
     DetailViewController* dvc = [Utils viewControllerWithIdentifier:@"DetailViewController" fromStoryBoardNamed: @"Main"];
     dvc.navigationItem.title=@"Gallery";
     dvc.navigationController.navigationBar.topItem.title = @"gallery";

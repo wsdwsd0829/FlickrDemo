@@ -130,22 +130,24 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
 //MARK: Transition
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     PageViewController* pvc = [[PageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     [self setupPageViewController:pvc withIndexPath: indexPath];
     [self.navigationController pushViewController:pvc animated:YES];
 }
 
 -(void)setupPageViewController: (PageViewController*) pvc withIndexPath:(NSIndexPath*)indexPath{
-    UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+    
     pvc.dataSource = pvc;  //pvc's navigation controller not set yet!
     pvc.viewModel = self.viewModel;
     pvc.edgesForExtendedLayout = UIRectEdgeBottom;
     DetailViewController* dvc = [pvc createDetailPage];
     dvc.photo = self.viewModel.photos[indexPath.item];
     [pvc setViewControllers:@[dvc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-    UIView* v = [[UIApplication sharedApplication] keyWindow].rootViewController.view;
-    pvc.fromFrame = [cell convertRect:cell.frame toView:v];
+    //get frame to start animation
+    UICollectionViewLayoutAttributes* attributes = [self.collectionView layoutAttributesForItemAtIndexPath:indexPath];
+    CGRect cellRect = attributes.frame;
+    CGRect cellFrameInSuperview = [self.collectionView convertRect:cellRect toView:[self.collectionView superview]];
+    pvc.fromFrame = cellFrameInSuperview;
 }
 
 -(id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
@@ -167,19 +169,12 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    
-    // Code here will execute before the rotation begins.
-    // Equivalent to placing it in the deprecated method -[willRotateToInterfaceOrientation:duration:]
+    // Code here will execute before the rotation begins. Equivalent to placing it in the deprecated method -[willRotateToInterfaceOrientation:duration:]
     [self.collectionView.collectionViewLayout invalidateLayout];
-
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        // Place code here to perform animations during the rotation.
-        // You can pass nil or leave this block empty if not necessary.
-        
+        // Place code here to perform animations during the rotation. You can pass nil or leave this block empty if not necessary.
     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        // Code here will execute after the rotation has finished.
-        // Equivalent to placing it in the deprecated method -[didRotateFromInterfaceOrientation:]
-       // [self.collectionView reloadData];
+        // Code here will execute after the rotation has finished, Equivalent to placing it in the deprecated method -[didRotateFromInterfaceOrientation:]
     }];
 }
 
