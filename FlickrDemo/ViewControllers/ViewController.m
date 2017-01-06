@@ -87,8 +87,11 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
         imageCell.imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageCell.imageView.layer.masksToBounds=YES;
         //use SDWebImage and comment below for better performance
-        //[imageCell.imageView sd_setImageWithURL:[NSURL URLWithString:  self.viewModel.photos[indexPath.row].originalImageUrlString] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        [imageCell.imageView sd_setImageWithURL:[NSURL URLWithString:  self.viewModel.photos[indexPath.row].originalImageUrlString] placeholderImage:[UIImage imageNamed:@"placeholder"]];
         
+        //below is a way to use memory cache
+        //uncomment it and comment above to see different
+        /*
         imageCell.imageView.image = [self.viewModel.cacheService imageForName:self.viewModel.photos[indexPath.row].originalImageUrlString];
         //Handle image caching in ViewModel layer
         [self.viewModel loadImageForIndexPath:indexPath withHandler:^(UIImage *image) {
@@ -103,7 +106,8 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
                                     imageCell.imageView.image = image;
                                 } completion:nil];
             }
-        }];
+        }];  */
+        
     }
     //NSLog(@"indexPath: %@", indexPath);
     if(indexPath.row + PreloadingOffset == self.viewModel.photos.count) {
@@ -178,6 +182,10 @@ NSInteger const PreloadingOffset = 10; //must smaller than PageCount in FlickerS
     }];
 }
 
-
+-(void)didReceiveMemoryWarning {
+    //could clean up here, not tested,
+//    [self.viewModel.cacheService cleanUp];
+//    [self.collectionView reloadData];
+}
 
 @end

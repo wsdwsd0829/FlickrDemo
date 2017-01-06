@@ -11,5 +11,4 @@
 #import "CacheServiceProtocol.h"
 
 @interface CacheService : NSObject<CacheServiceProtocol>
-
 @end

@@ -15,8 +15,5 @@
 //+(instancetype) defaultClient;
 //
 //-(void) fetchWithParams:(NSDictionary*) params withApi: (NSString*)api withHandler:(HttpResponseHandler) handler;
-//
-//-(void) postFormWithParams: (NSDictionary*) params withApi: (NSString*)api withHandler: (HttpResponseHandler) handler;
-//
-//-(void) postJSONWithParams: (NSDictionary*) params withApi: (NSString*)api withHandler: (HttpResponseHandler) handler;
+
 @end

@@ -44,4 +44,7 @@
     }
 }
 
+-(void)cleanUp {
+    productImageCache = [[NSMutableDictionary alloc] init];
+}
 @end
